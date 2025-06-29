@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="feedback-section">
+  <div class="feedback-wrapper">
+    <h1 class="feedback-title">Contact us</h1>
+    <form method="post" action="{% url 'feedback:feedback' %}">
+      {% csrf_token %}
+      <div class="form-columns">
+        <div class="form-left">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Name" id="id_name">
+            <label for="id_name">Name</label>
+          </div>
+          <div class="form-group">
+            <input type="text" name="phone" placeholder="Phone" id="id_phone">
+            <label for="id_phone">Phone</label>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Email" id="id_email">
+            <label for="id_email">Email</label>
+          </div>
+        </div>
+        <div class="form-right">
+          <div class="form-group">
+            <input type="text" name="subject" placeholder="Subject" id="id_subject">
+            <label for="id_subject">Subject</label>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Message" id="id_message"></textarea>
+            <label for="id_message">Message</label>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Send</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

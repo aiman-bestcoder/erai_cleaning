@@ -1,0 +1,115 @@
+.cleaning-area {
+    padding: 50px 20px;
+    background: linear-gradient(0deg, #f5f9ff, #e1f2ff);
+    margin: 6em auto;
+    width: 92%;
+    text-align: center;
+    border: none;
+    border-radius: 95px;
+    opacity: 0;
+    transform: translateY(50px);
+    box-shadow: 0 0 6px #00000018, inset -1px 1px 9px rgba(218, 235, 255, 0.499);
+    border: 1px solid rgba(255, 255, 255, 0.641);
+    transition: opacity 1s ease, transform 1s ease, box-shadow 0.8s ease-in-out;
+    display: flex;
+    flex-direction: column; /* Элементы по вертикали */
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 50px; /* Устанавливаем одинаковое расстояние снизу */
+}
+
+.cleaning-area.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #01406c;
+    transition: font-weight 0.3s ease;
+    text-align: center;
+}
+
+.locations-container {
+    display: flex;
+    justify-content: space-between; /* Сохраняем разделение контента */
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+    flex-wrap: wrap; /* Для адаптивного размещения */
+}
+
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 10px;
+    justify-content: flex-start;
+    width: 60%;
+}
+
+.location-link {
+    font-size: 1.2rem;
+    margin: 10px;
+    color: #32758f;
+    text-decoration: none;
+    transition: color 0.5s ease, transform 0.5s ease;
+    text-align: center;
+    display: inline-block;
+    transform-origin: center center;
+}
+
+.location-link:hover {
+    transform: scale(1.1);
+}
+
+.location-link:active {
+    color: #56cfff;
+    transform: scale(1.05);
+}
+
+.map-container {
+    width: 35%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 4px #00000013;
+    border-radius: 35px;
+    transition: scale 0.4s ease-in-out, box-shadow 0.5s ease-in-out;
+    margin: 0 auto;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+.map-container:hover {
+    scale: 1.02;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+    .locations-container {
+        flex-direction: column; /* Элементы идут друг за другом */
+        align-items: center;
+    }
+
+    .locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%; /* Занимает всю ширину */
+    }
+
+    .map-container {
+        width: 100%; /* Карта растягивается на всю ширину */
+    }
+}
+
+@media (max-width: 480px) {
+    .locations-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .map-container {
+        width: 100%; /* Карта на всю ширину */
+    }
+}

@@ -1,0 +1,82 @@
+.header {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    background-size: 200% 200%;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    z-index: 1000;
+    box-shadow: 0 0 4px #00000013;
+    cursor: pointer;
+    border: 1.5px solid #004e86;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    animation: headerfadeIn 0.5s forwards 1s;
+}
+
+@keyframes headerfadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.header:hover {
+    width: 475px;
+    height: 60px;
+    border-radius: 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 60px;
+    transition: all 0.3s ease;
+}
+
+.header:hover .logo {
+    width: 60px;
+}
+
+.logo img {
+    width: 56px;
+    height: 56px;
+    margin-right: 2px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 90px;
+    width: 350px;
+    transition: opacity 0.3s ease, left 0.3s ease;
+}
+
+.header:hover .nav-links {
+    opacity: 1;
+    left: 75px;
+}
+
+.nav-links a {
+    color: #004e86;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover {
+    transform: scale(1.1);
+}

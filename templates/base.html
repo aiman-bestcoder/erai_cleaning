@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='ru'>
+  {% load static %}
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>{% block title %}Erai Cleaning{% endblock %}</title>
+
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/header.css' %}" rel="stylesheet">
+	<link href="{% static 'css/homepage/homepage.css' %}" rel="stylesheet">
+	<link href="{% static 'css/homepage/reviews.css' %}" rel="stylesheet">
+	<link href="{% static 'css/homepage/area.css' %}" rel="stylesheet">
+	<link href="{% static 'css/homepage/about.css' %}" rel="stylesheet">
+	<link href="{% static 'css/homepage/about_home.css' %}" rel="stylesheet">
+	<link href="{% static 'css/footer.css' %}" rel="stylesheet">
+	<link href="{% static 'css/homepage/feedback.css' %}" rel="stylesheet">
+	<link href="{% static 'css/homepage/modal.css' %}" rel="stylesheet">
+	<link href="{% static 'css/services/services.css' %}" rel="stylesheet">
+	<link href="{% static 'css/services/services_window.css' %}" rel="stylesheet">
+	<link href="{% static 'css/services/order.css' %}" rel="stylesheet">
+	<link href="{% static 'css/services/extras.css' %}" rel="stylesheet">
+	<link href="{% static 'css/homepage/gallery.css' %}" rel="stylesheet">
+
+	<script src="{% static 'js/header.js' %}"></script>
+	<script src="https://unpkg.com/css-scroll-timeline/dist/css-scroll-timeline.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  </head>
+
+	<body>
+		</header>
+			{% include 'includes/header.html' %}
+		</header>
+		<main>
+			{% block content %}
+			{% endblock %}
+		</main>
+			{% include 'includes/footer.html' %}
+	</body>
+
+</html>

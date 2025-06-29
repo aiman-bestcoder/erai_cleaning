@@ -1,0 +1,178 @@
+.feedback-section {
+    width: 70%;
+    background: linear-gradient(0deg, #ffffff, #f1f9ff);
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 60px auto;
+    border-radius: 95px;
+    box-shadow:
+    inset 0 1px 4px #00000013,
+    inset 0 -1px 4px #00000013;
+  }
+  
+  .feedback-title {
+    color: #01406c;
+    font-size: 4rem;
+    font-weight: 520;
+    margin-bottom: 30px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .form-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+  
+  .form-left,
+  .form-right {
+    flex: 1;
+    min-width: 600px;
+  }
+  
+  .form-group {
+    margin-bottom: 35px;
+    position: relative;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(0deg, #f5f9ff, #e1f2ff);
+    box-shadow: 0 0 6px #00000018, inset -1px 1px 6px rgba(218, 235, 255, 0.499);
+    border: 1px solid rgba(255, 255, 255, 0.641);
+    color: #32758f;
+    box-sizing: border-box;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .form-group textarea {
+    width: 100%;
+    padding: 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 45px;
+    background: linear-gradient(0deg, #f5f9ff, #e1f2ff);
+    box-shadow: 0 0 6px #00000018, inset -1px 1px 6px rgba(218, 235, 255, 0.499);
+    border: 1px solid rgba(255, 255, 255, 0.641);
+    color: #32758f;
+    box-sizing: border-box;
+    transition: all 0.4s ease-in-out;
+    height: 250px; /* Увеличиваем высоту поля для сообщения */
+    resize: none;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    transform: scale(1.01);
+  }
+  
+  /* Подписи внутри полей */
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: transparent; /* Прячем стандартный placeholder */
+  }
+  
+  .form-group input:focus::placeholder,
+  .form-group textarea:focus::placeholder {
+    color: transparent; /* Убираем текст в плейсхолдере при фокусе */
+  }
+  
+  .form-group input:focus + label,
+  .form-group textarea:focus + label,
+  .form-group input:not(:placeholder-shown) + label,
+  .form-group textarea:not(:placeholder-shown) + label {
+    font-size: 0.8rem;
+    top: 0px;
+    color: #ffffff;
+    opacity: 0;
+  }
+  
+  /* Стиль для метки */
+  .form-group label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    font-size: 1rem;
+    color: #32758f;
+    pointer-events: none;
+    transition: 0.3s ease;
+    transform: translateY(-50%);
+  }
+  
+  /* Эффект увеличения полей при наведении */
+  .form-group input:hover,
+  .form-group textarea:hover {
+    transform: scale(1.02);
+  }
+  
+
+  
+  .submit-btn {
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background: transparent;
+    color: #18aeff;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    font-size: 1rem;
+    width: 80%;
+    border: 1px solid rgba(255, 255, 255, 0.641);
+    border-radius: 55px;
+    box-shadow: 0 0 6px #00000018, inset -1px 1px 6px rgba(218, 235, 255, 0.499);
+    max-width: 300px;
+    display: block;
+    margin: 20px auto 0;
+    will-change: transform, box-shadow, opacity;
+  }
+  
+  .submit-btn:hover {
+    background: transparent;
+    color: #000000;
+  }
+  
+  /* Эффект на кнопке при наведении */
+  .submit-btn:before {
+    content: '';
+    background: linear-gradient(45deg, #82a7bb, #c2e8fc, #76c5ef, #c2e8fc, #4fc1ff, #7fbada);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    will-change: background-position, opacity;
+    filter: blur(2px);
+    box-shadow: 0 0 3px #00000029, inset -1px 1px 6px rgba(255, 255, 255, 0.499);
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    animation: glowing 27s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in;
+    border-radius: 25px;
+  }
+  
+  .submit-btn:hover:before {
+    opacity: 1;
+  }
+
+  /* Анимация кнопки */
+  @keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+  }
+
+  .submit-btn:active {
+    transform: scale(0.97);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }

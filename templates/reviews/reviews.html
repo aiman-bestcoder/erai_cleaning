@@ -1,0 +1,48 @@
+{% load static %}
+
+<div class="reviews-section">
+  <h1 class="reviews-title">Live Reviews</h1>
+  <div class="reviews-container">
+    <img src="{% static 'static_media/reviews_image.png' %}" alt="Background" class="reviews-bg" />
+    <div style="width: 10px;"></div>
+    {% for review in reviews %}
+      <div class="review-card">
+        <p class="profile-name">{{ review.name }}</p>
+        <p class="profile-title">{{ review.work_description }}</p>
+        <p class="review-text">{{ review.text }}</p>
+      </div>
+    {% empty %}
+      <p class="text-center">Here is no reviews yet</p>
+    {% endfor %}
+    <div style="width: 10px;"></div>
+  </div>
+  <button class="add-review-btn" onclick="openModal()">Leave a Review</button>
+</div>
+<div id="reviewModal" class="modal">
+  <div style="height: 25%;"></div>
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div style="height: 25px;"></div>
+    <h2>            Leave a Review</h2>
+    <div style="height: 25px;"></div>
+    <form method="POST" action="{% url 'homepage:add_review' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <input type="text" id="name" name="name" maxlength="100" required>
+        <label for="name">Your name</label>
+      </div>
+      <div class="form-group">
+        <input type="text" id="work_description" name="work_description" maxlength="100" required>
+        <label for="work_description">Our work in one word</label>
+      </div>
+      <div class="form-group">
+        <textarea id="text" name="text" rows="4" required></textarea>
+        <label for="text">Review</label>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script src="{% static 'js/modal.js' %}"></script>

@@ -1,0 +1,128 @@
+/* === Базовые стили страницы === */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+  background: linear-gradient(45deg, #ecf6ff, #e3f3ff);
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+/* === Контейнер с полноэкранным изображением === */
+.image-container {
+  position: relative;
+  z-index: 9;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin-bottom: -50px;
+}
+
+/* фон-слой, скрывающий изображение, пока не прогрузится */
+.image-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 5;
+  animation: fadeOut 1s ease-in-out forwards;
+}
+
+/* Размытие + яркость при загрузке */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes imageBlurIn {
+  from { filter: blur(10px) brightness(1.5); }
+  to   { filter: blur(0)  brightness(1); }
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #000;
+  box-shadow: 0 0 7px #00000013;
+  animation: imageBlurIn 1s ease-in-out forwards;
+  transition: transform 0.2s ease, filter 0.2s ease; /* Плавное изменение */
+  will-change: transform, filter; /* Подготовка к изменениям */
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #E0E1DD;
+  text-align: center;
+  z-index: 10;
+  padding: 20px;
+  opacity: 0;
+  animation: fadeIn 2s forwards 1s;
+  will-change: opacity, transform;
+}
+
+.overlay button {
+  padding: 10px 25px;
+  font-size: 1.2em;
+  border: 1px solid #E0E1DD;
+  background-color: transparent;
+  color: #E0E1DD;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.4s, color 0.4s, transform 0.4s;
+  will-change: transform;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.overlay h1 {
+  font-size: 5em;
+  margin-bottom: 10px;
+}
+
+.overlay p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.overlay button {
+  padding: 10px 25px;
+  font-size: 1.2em;
+  box-shadow: 0 0 6px #00000018, inset -1px 1px 6px rgba(218, 235, 255, 0.499);
+  border: 1px solid rgba(255, 255, 255, 0.641);
+  background-color: rgba(255, 255, 255, 0.018);
+  color: #E0E1DD;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.4s, color 0.4s, transform 0.4s;
+}
+
+.overlay button:hover {
+  background-color: #ffffffd4;
+  color: #000;
+  transform: scale(1.06);
+}
+
+.overlay button:active {
+  background-color: #E0E1DD;
+  color: #000;
+  transform: scale(1.03);
+}
+
+.overlay img {
+  width: 100px;
+  height: auto;
+  margin-top: 20px;
+}

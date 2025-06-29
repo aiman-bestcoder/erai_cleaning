@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Главная - ERAI{% endblock %}
+
+{% block content %}
+<div class="scroll-container">
+  <!-- Hero Section -->
+  <section class="section" id="hero">
+    <div id="hero-box" class="visible">
+      <h1 id="hero-text">ERAI — where shine is a must</h1>
+    </div>
+    <p class="fade-in-paragraph">Добро пожаловать в ERAI Cleaning — мы делаем блеск обязательным.</p>
+  </section>
+
+  <!-- Founders Section -->
+  <section class="section" id="founders">
+    <div class="row text-center">
+      {% for i in "123" %}
+        {% with i|stringformat:"i" as idx %}
+        <div class="col-4">
+          <div class="founder-image" style="background-image: url('{% static "img/founder"|add:idx|add:".jpg" %}');"></div>
+        </div>
+        {% endwith %}
+      {% endfor %}
+    </div>
+    <p class="fade-in-paragraph">Познакомьтесь с нашими основателями — мастерами своего дела.</p>
+  </section>
+
+  <!-- Advantages Section -->
+  <section class="section" id="advantages">
+    <div class="row text-center justify-content-center">
+      {% for i in "12345" %}
+        {% with i|stringformat:"i" as idx %}
+        <div class="col-2">
+          <img src="{% static 'img/star'|add:idx|add:'.svg' %}" class="advantage-star" alt="star">
+          <p>Преимущество {{ idx }}</p>
+        </div>
+        {% endwith %}
+      {% endfor %}
+    </div>
+    <p class="fade-in-paragraph">Каждое наше преимущество — ваша выгода.</p>
+  </section>
+</div>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        entry.target.querySelectorAll('.founder-image, .advantage-star').forEach(el => {
+          el.classList.add('visible');
+          setTimeout(() => {
+            el.classList.add('glow-once');
+          }, 200);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.section').forEach(section => {
+    observer.observe(section);
+  });
+</script>
+{% endblock %}

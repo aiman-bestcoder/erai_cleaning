@@ -1,0 +1,200 @@
+.catalog-section {
+  width: 40vw;
+  height: 70vh;
+  margin: 7vh 2vw;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(241, 249, 255, 0.8));
+  border-radius: 55px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+  backdrop-filter: blur(20px); /* Эффект стеклянного фона */
+  transition: all 0.3s ease;
+}
+
+.catalog-content {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.catalog-content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Новый реальный элемент для тени */
+.catalog-shadow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.2),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Контент поверх тени */
+.service-block {
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  scroll-snap-align: start;
+  background: transparent;
+  z-index: 2;
+}
+
+.service-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.6); /* Затемнение фона */
+  transition: filter 0.3s ease;
+}
+
+/* Эффект при наведении */
+.service-img:hover {
+  filter: brightness(0.8); /* Подсветка фона при наведении */
+}
+
+.service-overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    45deg,
+    #99ddffc0,
+    #e1f2ffbc 50%,
+    #bce1ffc3 100%
+  );
+  overflow: hidden;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.service-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.service-title {
+  color: #013f6cc7;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 20px;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Легкое свечение */
+}
+
+.service-description {
+  text-shadow: 0 0 3px #00000032;
+  color: #32758fcd;
+  font-size: 1.5rem;
+  margin: 0 0 30px 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  width: 100%;
+  padding-right: 40px;
+}
+
+.service-price {
+  background: linear-gradient(0deg, #f5f9ff, #e1f2ff);
+  border-radius: 35px;
+  padding: 12px 24px;
+  color: #32758f;
+  font-weight: 700;
+  box-shadow: 0 0 8px rgba(140, 193, 255, 0.5);
+  font-size: 1.3rem;
+  margin: 0;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+/* Плавная пульсация цены */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 2px #00000013;
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 8px #8ec1ff9e;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 2px #00000013;
+  }
+}
+
+.service-info-icon {
+  box-shadow: 0 0 3px #cadffc32;
+  background: linear-gradient(0deg, #f5f9ff, #e1f2ff);
+  border-radius: 30px;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #32758f;
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: width 0.5s ease, height 0.5s ease, border-radius 0.5s ease, padding 0.5s ease;
+  overflow: hidden;
+}
+
+/* Контейнер для текста */
+.service-info-text {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.6s ease;
+  font-size: 1rem;
+  color: #01406c;
+  text-align: left;
+  padding: 10px;
+}
+
+/* Класс для анимации (JS будет добавлять его) */
+.service-info-icon.expanded {
+  width: 10.5vw;
+  height: 10.5vw;
+  border-radius: 45px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.service-info-icon.expanded .service-info-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+

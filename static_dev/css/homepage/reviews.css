@@ -95,7 +95,6 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(225, 242, 255, 0.4);
-  box-shadow: inset -1px 1px 4px rgba(255, 255, 255, 0.15), 0 2px 8px rgba(0, 0, 0, 0.06);
   z-index: 2;
 }
 

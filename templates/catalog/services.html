@@ -1,25 +1,18 @@
 {% load static %}
-
-<section class="catalog-section">
-  <div class="catalog-content">
+<section class="services-section">
+  <h1 class="services-title">Services</h1>
+  <div class="services-row">
 
     {% for service in services %}
       <div class="service-card">
-
         <div class="service-image">
           <img src="{{ service.service_thumbnail.url }}" alt="{{ service.service_title }}">
         </div>
-
-        <div class="service-title-wrapper">
-          <h3 class="service-title">{{ service.service_title }}</h3>
+        <div class="service-info">
+          <h3>{{ service.service_title }}</h3>
+          <p>{{ service.service_description }}</p>
+          <span class="price">Starting at {{ service.service_price }}$</span>
         </div>
-
-        <div class="service-description-wrapper">
-          <p class="service-description">{{ service.service_description }}</p>
-        </div>
-
-        <span class="service-price">Starting at {{ service.service_price }}$</span>
-
       </div>
     {% empty %}
       <p>No services available at the moment.</p>

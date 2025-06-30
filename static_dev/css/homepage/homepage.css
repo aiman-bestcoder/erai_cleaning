@@ -88,22 +88,34 @@ html, body {
 .overlay h1 {
   font-size: 5em;
   margin-bottom: 10px;
+  color: #013f6cc7;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: rgba(196, 220, 255, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50px;
+  border: 1px solid rgba(225, 242, 255, 0.4);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 0 6px rgba(0, 0, 0, 0.1);
 }
 
 .overlay p {
   font-size: 1.2em;
   margin-bottom: 20px;
+  color: #7094ca;
 }
 
 .overlay button {
   padding: 10px 25px;
   font-size: 1.2em;
-  box-shadow: 0 0 6px #00000018, inset -1px 1px 6px rgba(218, 235, 255, 0.499);
-  border: 1px solid rgba(255, 255, 255, 0.641);
-  background-color: rgba(255, 255, 255, 0.018);
-  color: #E0E1DD;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 0 6px #ffffffaf;
+  border: 1px solid #f9fbff61;
+  background-color: #ffffff05;
+  color: #1200868e;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.4s, color 0.4s, transform 0.4s;
@@ -112,7 +124,7 @@ html, body {
 .overlay button:hover {
   background-color: #ffffffd4;
   color: #000;
-  transform: scale(1.06);
+  transform: scale(1.1);
 }
 
 .overlay button:active {

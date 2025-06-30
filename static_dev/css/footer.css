@@ -1,6 +1,8 @@
 .footer {
   padding: 50px 20px;
   background: linear-gradient(0deg, #f5f9ff, #e1f2ff);
+  box-shadow: 0 0 6px #00000018, inset -1px 1px 9px rgba(218, 235, 255, 0.499);
+  border: 1px solid rgba(255, 255, 255, 0.641);
   border-top-left-radius: 55px;
   border-top-right-radius: 55px;
   width: 100%;

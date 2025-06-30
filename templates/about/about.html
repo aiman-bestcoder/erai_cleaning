@@ -1,65 +1,43 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Главная - ERAI{% endblock %}
-
 {% block content %}
-<div class="scroll-container">
-  <!-- Hero Section -->
-  <section class="section" id="hero">
-    <div id="hero-box" class="visible">
-      <h1 id="hero-text">ERAI — where shine is a must</h1>
-    </div>
-    <p class="fade-in-paragraph">Добро пожаловать в ERAI Cleaning — мы делаем блеск обязательным.</p>
-  </section>
+<div class="about-wrapper">
+  <div class="glass-container">
+    <h1 class="about-title">About ERAI Cleaning</h1>
+    <p class="about-text">
+      ERAI Cleaning was born from experience — built by professionals who’ve worked in the industry and understand what it means to care for a space like it's your own.
+      <br><br>
+      We believe that cleaning is not just a service, but a trust. That’s why every project we take on — whether it's a cozy café, a high-traffic office, or a new home — is handled with the same level of precision, discretion, and pride.
+    </p>
 
-  <!-- Founders Section -->
-  <section class="section" id="founders">
-    <div class="row text-center">
-      {% for i in "123" %}
-        {% with i|stringformat:"i" as idx %}
-        <div class="col-4">
-          <div class="founder-image" style="background-image: url('{% static "img/founder"|add:idx|add:".jpg" %}');"></div>
-        </div>
-        {% endwith %}
-      {% endfor %}
+    <div class="about-section">
+      <h2 class="section-title">Our Values</h2>
+      <ul class="about-list">
+        <li><strong>✨ Excellence:</strong> every corner, every surface, perfectly done.</li>
+        <li><strong>🕊️ Simplicity:</strong> booking and communication made easy.</li>
+        <li><strong>🌿 Care:</strong> eco-conscious practices that protect your health and the environment.</li>
+        <li><strong>💎 Transparency:</strong> honest pricing, no surprises.</li>
+      </ul>
     </div>
-    <p class="fade-in-paragraph">Познакомьтесь с нашими основателями — мастерами своего дела.</p>
-  </section>
 
-  <!-- Advantages Section -->
-  <section class="section" id="advantages">
-    <div class="row text-center justify-content-center">
-      {% for i in "12345" %}
-        {% with i|stringformat:"i" as idx %}
-        <div class="col-2">
-          <img src="{% static 'img/star'|add:idx|add:'.svg' %}" class="advantage-star" alt="star">
-          <p>Преимущество {{ idx }}</p>
-        </div>
-        {% endwith %}
-      {% endfor %}
+    <div class="about-section">
+      <h2 class="section-title">Why ERAI?</h2>
+      <p class="about-text">
+        We’ve worked from the ground up — from cleaners ourselves to founders who know every detail. That’s why our clients stay with us — because they see the difference in how we clean, how we talk, and how we care.
+        <br><br>
+        Whether you're a business owner looking for reliable cleaning, or someone who simply wants to come home to fresh air and gleaming floors — we're here for you.
+      </p>
     </div>
-    <p class="fade-in-paragraph">Каждое наше преимущество — ваша выгода.</p>
-  </section>
+
+    <div class="founder-note">
+      <h2 class="section-title">A Note from the Founder</h2>
+      <p class="about-text">
+        "I started ERAI Cleaning because I wanted to bring care back into cleaning. After working in the industry myself, I saw what was missing — empathy, pride, and consistency. Today, we’re not just offering cleaning services, we’re building long-term relationships with clients who value quality and peace of mind."  
+        <br><br>
+        — Aiman Yusupzhanov, Founder of ERAI Cleaning
+      </p>
+    </div>
+  </div>
 </div>
-
-<script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-        entry.target.querySelectorAll('.founder-image, .advantage-star').forEach(el => {
-          el.classList.add('visible');
-          setTimeout(() => {
-            el.classList.add('glow-once');
-          }, 200);
-        });
-      }
-    });
-  }, { threshold: 0.5 });
-
-  document.querySelectorAll('.section').forEach(section => {
-    observer.observe(section);
-  });
-</script>
 {% endblock %}

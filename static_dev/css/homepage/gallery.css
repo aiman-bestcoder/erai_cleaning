@@ -47,7 +47,7 @@
   border-radius: 55px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.21);
-  box-shadow: 0 0 6px #00000018, inset -1px 1px 6px rgba(218, 235, 255, 0.499);
+  box-shadow: 0 0 6px #00000018, inset 0px 0px 3px rgba(218, 235, 255, 0.499);
   opacity: 1;
   z-index: 2;
 }

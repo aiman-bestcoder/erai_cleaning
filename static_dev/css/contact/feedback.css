@@ -1,0 +1,276 @@
+.feedback-section {
+  display: flex;
+  width: 80%;
+  min-height: 600px;
+  border-radius: 95px;
+  overflow: hidden;
+  margin: auto;
+  background-color: #fbf8ff;
+  border: 1px solid rgba(255, 255, 255, 0.669);
+  margin-top: 50px;
+}
+
+.feedback-left {
+  flex: 1;
+  background-image: url('/static/static_media/reviews_image.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.feedback-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.274);
+  z-index: 1;
+  pointer-events: none;
+  border-bottom-left-radius: 95px;
+  border-top-left-radius: 95px;
+}
+
+.feedback-left > * {
+  position: relative;
+  z-index: 2;
+}
+
+.feedback-glass {
+  background: #ffffff33;
+  backdrop-filter: blur(15px);
+  border-radius: 45px;
+  padding: 40px;
+  max-width: 500px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+.feedback-glass h1 {
+  position: relative;
+  font-size: 2.5rem;
+  color: #00528c;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+}
+
+.feedback-glass h1::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  bottom: 0;
+  width: 90%;
+  height: 2px;
+  background: #ffffff64;
+  pointer-events: none;
+}
+
+.feedback-info-box {
+  background: rgba(255, 255, 255, 0.393);
+  border-radius: 25px;
+  padding: 20px;
+  font-size: 1rem;
+  color: #013f6c;
+  margin-top: 20px;
+}
+
+.feedback-right {
+  flex: 1;
+  background: #b2e4ff53;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.feedback-form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.feedback-form-row {
+  display: flex;
+  gap: 20px;
+}
+  
+.feedback-title {
+  position: absolute;
+  left: 15%;
+  font-size: 3.3em;
+  font-weight: 600;
+  padding: 0.2em 1em;
+  margin-top: -75px;
+  color: #013f6cc7;
+  border-radius: 60px;
+  border: 1px solid rgb(255, 255, 255);
+  backdrop-filter: blur(4px) saturate(1.3);
+  -webkit-backdrop-filter: blur(4px) saturate(1.3);
+  background: rgba(216, 231, 255, 0.411);
+  white-space: nowrap;
+  z-index: 12;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.feedback-form-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 70px;
+}
+
+.feedback-form-left,
+.feedback-form-right {
+  flex: 1;
+  min-width: 600px;
+}
+
+.feedback-form-group {
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.feedback-form-group input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  background: #ffffff69;
+  box-shadow: 0 0 3px #00000018,
+              inset 0 0 6px #00000009;
+  border: 1px solid rgba(255, 255, 255, 0.641);
+  color: #32758f;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+
+.feedback-form-group textarea {
+  width: 100%;
+  padding: 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 45px;
+  background: #ffffff69;
+  box-shadow: 0 0 3px #00000018,
+              inset 0 0 6px #00000009;
+  border: 1px solid rgba(255, 255, 255, 0.641);
+  color: #32758f;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  height: 150px;
+  resize: none;
+}
+
+.feedback-form-group input:focus,
+.feedback-form-group textarea:focus {
+  outline: none;
+  box-shadow: 0 0 7px #6799ff5c,
+              inset 0 0 6px #00000011;
+}
+
+.feedback-form-group input::placeholder,
+.feedback-form-group textarea::placeholder {
+  color: transparent;
+}
+
+.feedback-form-group input:focus::placeholder,
+.feedback-form-group textarea:focus::placeholder {
+  color: transparent;
+}
+
+.feedback-form-group label {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  font-size: 1rem;
+  color: #32758f;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: 0.3s ease;
+  background: rgba(255, 255, 255, 0);
+  padding: 0 6px;
+  border-radius: 8px;
+}
+
+.feedback-form-group input:focus + label,
+.feedback-form-group textarea:focus + label,
+.feedback-form-group input:not(:placeholder-shown) + label,
+.feedback-form-group textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 30px;
+  font-size: 0.75rem;
+  color: #01406c;
+  background: rgba(215, 231, 255, 0.63);
+  box-shadow: 0 0 6px rgba(215, 231, 255, 0.63);
+}
+
+.feedback-form-group input:hover,
+.feedback-form-group textarea:hover {
+  box-shadow: 0 0 7px #6799ff5c,
+              inset 0 0 6px rgba(0, 0, 0, 0.094);
+}
+
+.feedback-submit-btn {
+  padding: 15px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  transition: all 0.4s ease-in-out;
+  background: transparent;
+  color: #18aeff;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  font-size: 1rem;
+  width: 80%;
+  border: 1px solid rgba(255, 255, 255, 0.641);
+  border-radius: 55px;
+  box-shadow: 0 0 6px #00000018, inset -1px 1px 6px rgba(218, 235, 255, 0.499);
+  max-width: 300px;
+  display: block;
+  margin: 20px auto 0;
+  will-change: transform, box-shadow, opacity;
+}
+
+.feedback-submit-btn:hover {
+  background: transparent;
+  color: #000000;
+  transform: scale(1.1) translateY(-3px);
+}
+
+.feedback-submit-btn:before {
+  content: '';
+  background: linear-gradient(45deg, #82a7bb, #c2e8fc, #76c5ef, #c2e8fc, #4fc1ff, #7fbada);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  will-change: background-position, opacity;
+  filter: blur(2px);
+  box-shadow: 0 0 3px #00000029, inset -1px 1px 6px rgba(255, 255, 255, 0.499);
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  animation: glowing 27s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in;
+  border-radius: 25px;
+}
+
+.feedback-submit-btn:hover:before {
+  opacity: 1;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+.feedback-submit-btn:active {
+  transform: scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

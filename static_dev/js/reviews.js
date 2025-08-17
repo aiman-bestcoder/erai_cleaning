@@ -1,128 +1,59 @@
-let currentIndex = 0;
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".reviews-container");
+  const cards = document.querySelectorAll(".review-card");
+  const title = document.querySelector(".reviews-title");
+  const bg = document.querySelector(".reviews-background");
 
-const container = document.querySelector('.reviews-container');
-const cards = document.querySelectorAll('.review-card');
-const prevButton = document.getElementById('prev-button');
-const nextButton = document.getElementById('next-button');
-const title = document.querySelector('.reviews-title');  // Заголовок
+  if (!container || !bg) return;
 
-// Функция для прокрутки карусели
-function moveCarousel(direction) {
-  const cardWidth = cards[0].offsetWidth + 20; // Ширина карточки с учетом отступа
+  // Задаем плавность через CSS
+  bg.style.transition = "transform 0.2s ease-out";
 
-  // Обновляем текущий индекс с учетом направления
-  currentIndex += direction;
+  // Параллакс фона при скролле
+  function updateBg() {
+    const rect = container.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
 
-  // Блокируем кнопки, если достигнут предел
-  if (currentIndex < 0) {
-    currentIndex = 0; // Нельзя прокручивать влево за пределы
-  } else if (currentIndex >= cards.length) {
-    currentIndex = cards.length - 1; // Нельзя прокручивать вправо за пределы
-  }
-
-  // Прокрутка на одну карточку
-  const targetPosition = currentIndex * cardWidth;
-
-  // Применяем плавную прокрутку
-  container.scrollTo({
-    left: targetPosition,
-    behavior: 'smooth' // Плавная прокрутка
-  });
-
-  // Прокручиваем к видимой карточке
-  cards[currentIndex].scrollIntoView({
-    behavior: 'smooth',
-    block: 'nearest',
-    inline: 'center' // Центрируем карточку в пределах видимой области
-  });
-
-  // Блокировка кнопок в зависимости от положения
-  toggleButtons();
-}
-
-// Функция для блокировки кнопок
-function toggleButtons() {
-  if (currentIndex === 0) {
-    prevButton.disabled = true; // Блокируем кнопку влево
-  } else {
-    prevButton.disabled = false;
-  }
-
-  if (currentIndex === cards.length - 1) {
-    nextButton.disabled = true; // Блокируем кнопку вправо
-  } else {
-    nextButton.disabled = false;
-  }
-}
-
-// Функция для анимации появления карточек
-function animateCards() {
-  const options = {
-    threshold: 0.1 // Элемент должен быть виден хотя бы на 10%
-  };
-
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Анимируем карточку при первом появлении
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target); // Останавливаем наблюдение для этой карточки
-      }
-    });
-
-    // Анимируем заголовок, если хотя бы одна карточка видна
-    if (!title.classList.contains('show')) {
-      title.classList.add('show'); // Запуск анимации заголовка
+    if (rect.bottom > 0 && rect.top < windowHeight) {
+      // progress 0..1 от появления контейнера
+      const progress = Math.min(Math.max((windowHeight - rect.top) / (windowHeight + rect.height), 0), 1);
+      const maxOffset = 250; // смещение в px
+      bg.style.transform = `translateY(${progress * maxOffset}px)`;
     }
-  }, options);
+  }
 
-  cards.forEach(card => {
-    observer.observe(card); // Наблюдаем за каждой карточкой
-  });
-}
+  window.addEventListener("scroll", updateBg);
+  window.addEventListener("resize", updateBg);
+  updateBg();
 
-// Функция для анимации заголовка
-function animateTitle() {
-  const options = {
-    threshold: 0.05 // Элемент должен быть виден хотя бы на 5% в пределах экрана
-  };
-
-  const observer = new IntersectionObserver((entries, observer) => {
+  // Анимация карточек
+  const cardObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('show'); // Добавляем класс для анимации
-        observer.unobserve(entry.target); // Останавливаем наблюдение для этого элемента
+        entry.target.classList.add("show");
+        obs.unobserve(entry.target);
       }
     });
-  }, options);
+  }, { threshold: 0.1 });
+  cards.forEach(card => cardObserver.observe(card));
 
-  observer.observe(title); // Наблюдаем за заголовком
-}
+  // Анимация заголовка
+  const titleObserver = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      title.classList.add("show");
+      titleObserver.unobserve(entry.target);
+    }
+  }, { threshold: 0.05 });
+  titleObserver.observe(title);
 
-// Запуск анимации для карточек и заголовка
-animateCards();
-toggleButtons(); // Настроим кнопки
-animateTitle();  // Анимация для заголовка
-
-// Слушатели событий для кнопок прокрутки
-prevButton.addEventListener('click', () => moveCarousel(-1));
-nextButton.addEventListener('click', () => moveCarousel(1));
-
-// Обновление стилей для первой и последней карточки
-function updateCardMargins() {
-  // Убираем все марджины
-  cards.forEach(card => {
-    card.style.marginLeft = '0';
-    card.style.marginRight = '0';
-  });
-
-  // Добавляем марджины для первой и последней карточки
-  if (cards.length > 0) {
-    cards[0].style.marginLeft = '20px'; // Отступ для первой карточки
-    cards[cards.length - 1].style.marginRight = '20px'; // Отступ для последней карточки
+  // Отступы для крайних карточек
+  function updateCardMargins() {
+    cards.forEach(card => { card.style.marginLeft = "0"; card.style.marginRight = "0"; });
+    if (cards.length) {
+      cards[0].style.marginLeft = "20px";
+      cards[cards.length-1].style.marginRight = "20px";
+    }
   }
-}
-
-// Обновляем отступы при изменении окна или инициализации
-window.addEventListener('resize', updateCardMargins);
-updateCardMargins(); // Инициализация при загрузке
+  window.addEventListener("resize", updateCardMargins);
+  updateCardMargins();
+});

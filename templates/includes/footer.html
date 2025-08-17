@@ -1,29 +1,70 @@
 {% load static %}
 <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-logo">
-        <a href="/" class="footer-brand">Erai Cleaning</a>
-      </div>
-      <nav class="footer-nav">
-        <a href="/about" class="footer-link">About Us</a>
-        <a href="/services" class="footer-link">Services</a>
-        <a href="/locations" class="footer-link">Locations</a>
-        <a href="/contact" class="footer-link">Contact</a>
-      </nav>
-      <div class="footer-socials">
-        <a href="#" class="social-link" aria-label="Facebook">
-          <i class="fab fa-facebook"></i>
+  <div class="footer-container">
+
+    <!-- Column 1: Logo + Buttons + Contact -->
+    <div class="footer-col">
+      <img src="{% static 'img/logo.png' %}" alt="Erai Cleaning Logo" class="footer-logo-img">
+
+      <div class="footer-quick-icons">
+        <a href="#" class="footer-icon-only" aria-label="Facebook">
+          <i class="fab fa-facebook footer-icon"></i>
         </a>
-        <a href="#" class="social-link" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
+        <a href="#" class="footer-icon-only" aria-label="Instagram">
+          <i class="fab fa-instagram footer-icon"></i>
         </a>
-        <a href="#" class="social-link" aria-label="Twitter">
-          <i class="fab fa-twitter"></i>
+        <a href="#" class="footer-icon-only" aria-label="Twitter">
+          <i class="fab fa-twitter footer-icon"></i>
         </a>
       </div>
+
+      <a href="/booking" class="footer-btn booking-btn">Book Now</a>
+      <a href="/estimate" class="footer-btn estimate-btn">Free Estimate</a>
+
+      <div class="footer-contact">
+        <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+        <p><a href="mailto:info@eraicleaning.com">info@eraicleaning.com</a></p>
+      </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2024 CleanCo. All rights reserved.</p>
+
+    <!-- Links Box: объединяем About, Services и Explore -->
+    <div class="links-box">
+      <div class="links-column">
+        <h3 class="footer-heading">About</h3>
+        <ul class="footer-links">
+          <li><a href="/about/team">Our Team</a></li>
+          <li><a href="/about/story">Our Story</a></li>
+          <li><a href="/about/careers">Careers</a></li>
+          <li><a href="/about/mission">Mission</a></li>
+          <li><a href="/about/press">Press</a></li>
+        </ul>
+      </div>
+
+      <div class="links-column">
+        <h3 class="footer-heading">Services</h3>
+        <ul class="footer-links">
+          <li><a href="/services/house-cleaning">House Cleaning</a></li>
+          <li><a href="/services/deep-clean">Deep Cleaning</a></li>
+          <li><a href="/services/move-out">Move-Out</a></li>
+          <li><a href="/services/office">Office Cleaning</a></li>
+          <li><a href="/services/carpet">Carpet Cleaning</a></li>
+        </ul>
+      </div>
+
+      <div class="links-column">
+        <h3 class="footer-heading">Explore</h3>
+        <ul class="footer-links">
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/results">Results</a></li>
+          <li><a href="/locations">Locations</a></li>
+          <li><a href="/reviews">Reviews</a></li>
+        </ul>
+      </div>
     </div>
-  </footer>
-  
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2024 Erai Cleaning. All rights reserved.</p>
+  </div>
+</footer>

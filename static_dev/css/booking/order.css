@@ -1,0 +1,504 @@
+.order-form-wrapper {
+  width: 80%;
+  margin: 60px auto;
+  margin-top: 0;
+  background: linear-gradient(0deg, #ffffff, #f1f9ff);
+  padding: 50px;
+  border-radius: 95px;
+  box-shadow: inset 0 1px 4px #00000013,
+              inset 0 -1px 4px #00000013;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border: 1px solid rgba(255, 255, 255, 0.646);
+}
+
+.order-form-layout {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  align-items: stretch;
+}
+
+.order-form-left {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: 20px;
+  height: 100%;
+}
+
+.order-form-right {
+  width: 25%;
+  background: rgba(255, 255, 255, 0.181);
+  border-radius: 65px;
+  box-sizing: border-box;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.057), inset 0 0 3px rgba(0, 0, 0, 0.152);
+  border: 1px solid rgba(255, 255, 255, 0.646);
+  position: relative;
+  overflow-y: visible;
+}
+
+.order-top-row,
+.order-middle-row,
+.order-row-4,
+.order-bottom-row {
+  display: flex;
+  gap: 20px;
+}
+
+.order-top-row > * {
+  flex: 1;
+}
+
+.order-middle-row > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.order-row-4.order-bottom-datetime > * {
+  flex: 1;
+}
+
+.order-row-4 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.order-row-3 {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap; /* чтобы не переносились */
+}
+
+
+.order-bottom-row.order-bottom-flex {
+  display: flex;
+  gap: 20px;
+}
+
+.order-bottom-right {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  flex-grow: 1;
+}
+
+.order-bottom-left {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-bottom-right textarea {
+  flex-grow: 1;
+  resize: vertical;
+  border-radius: 25px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(8px);
+  color: #32758f;
+  font-size: 1rem;
+  box-sizing: border-box;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05),
+              inset -1px 1px 12px rgba(239,247,255,0.7);
+  transition: all 0.3s ease-in-out;
+}
+
+.order-submit-wrapper {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.order-form-title {
+  position: absolute;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  font-size: 2.3em;
+  font-weight: 300;
+  padding: 0.2em 1em;
+  margin-top: -40px;
+  color: #013f6cc7;
+  border-radius: 60px;
+  border: 1px solid rgb(255, 255, 255);
+  backdrop-filter: blur(4px) saturate(1.3);
+  -webkit-backdrop-filter: blur(4px) saturate(1.3);
+  background: linear-gradient(45deg, #f1fbff, #f1f9ff);
+  box-shadow: inset 0 0 4px #00000020;
+  white-space: nowrap;
+  z-index: 12;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.order-submit-btn {
+  padding: 15px;
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,0.64);
+  background-color: transparent;
+  color: #91d8fe;
+  font-size: 1rem;
+  width: 80%;
+  max-width: 300px;
+  margin: 20px auto 0;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  display: block;
+  box-shadow: 0 0 4px #00000013,
+              inset -1px 1px 7px rgba(241,248,255,0.63),
+              0 0 6px #00000018;
+  transition: all 0.35s;
+  will-change: transform, box-shadow, opacity;
+}
+
+.order-submit-btn::before {
+  content: '';
+  position: absolute;
+  top: -3px; left: -3px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  border-radius: 25px;
+  background: linear-gradient(45deg,
+              #82a7bb, #c2e8fc, #76c5ef,
+              #c2e8fc, #4fc1ff, #7fbada);
+  background-size: 400%;
+  filter: blur(2px);
+  box-shadow: 0 0 6px #00000018,
+              inset -1px 1px 7px rgba(241,248,255,0.63);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+  animation: glowing 27s linear infinite;
+}
+
+.order-submit-btn:hover {
+  background: transparent;
+  color: #000000;
+  transform: scale(1.1) translateY(-3px);
+}
+
+.order-submit-btn:hover::before {
+  opacity: 1;
+}
+
+.order-submit-btn:active {
+  transform: scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes glowing {
+  0%   { background-position: 0 0; }
+  50%  { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Плавающие лейблы и стили полей
+   ───────────────────────────────────────────────────────────────────── */
+
+/* Контейнер-поле */
+.floating-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+/* Input, select, textarea */
+.floating-group input,
+.floating-group select,
+.floating-group textarea {
+  width: 100%;
+  padding: 16px 18px 16px; /* больше padding-top для лейбла */
+  font-size: 1rem;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(8px);
+  border-radius: 25px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.081),
+              inset 0 0 6px rgba(0, 0, 0, 0.036);
+  color: #32758f;
+  box-sizing: border-box;
+  transition: all 0.35s ease-in-out;
+}
+
+.floating-group input:active,
+.floating-group select:active,
+.floating-group textarea:active {
+  transform: scale(0.98);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+.floating-group textarea {
+  resize: none;
+  height: 360px;
+  border-radius: 35px;
+}
+
+/* Спрятать плейсхолдер */
+.floating-group input::placeholder,
+.floating-group textarea::placeholder {
+  color: transparent;
+}
+
+/* Убрать нативную стрелку у select */
+.floating-group select {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Hover/focus-анимации полей */
+.floating-group input:hover,
+.floating-group select:hover,
+.floating-group textarea:hover {
+  box-shadow: 0 0 10px rgba(115,172,255,0.4),
+              inset 0 0 6px rgba(0, 0, 0, 0.094);
+  transform: scale(1.01);
+}
+
+.floating-group input:focus,
+.floating-group select:focus,
+.floating-group textarea:focus {
+  outline: none;
+  box-shadow: 0 0 6px rgba(115,172,255,0.4),
+              inset 0 0 3px rgba(0, 0, 0, 0.089);
+  background: rgba(255,255,255,0.5);
+  transform: scale(1.01);
+}
+
+/* Лейбл поверх поля */
+.floating-group label {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0);
+  padding: 0 6px;
+  border-radius: 8px;
+  color: #32758f;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.3s ease;
+  z-index: 1;
+}
+
+/* Подъём лейбла */
+.floating-group input:focus + label,
+.floating-group textarea:focus + label,
+.floating-group input:not(:placeholder-shown) + label,
+.floating-group textarea:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 14px;
+  font-size: 0.75rem;
+  color: #01406c;
+  background: rgba(215,231,255,0.63);
+  box-shadow: 0 0 6px rgba(215,231,255,0.63);
+}
+
+.floating-group input[type="number"]::-webkit-outer-spin-button,
+.floating-group input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.floating-group input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.custom-dropdown {
+  position: relative;
+  color: #32758f;
+  width: 100%;
+  max-width: 400px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 25px;
+  transition: all 0.35s ease;
+  border: 1px solid rgba(255,255,255,0.64);
+  z-index: 30;
+}
+
+.custom-dropdown .selected {
+  padding: 16px 18px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.64);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.081),
+              inset 0 0 6px rgba(0, 0, 0, 0.036);
+  transition: all 0.35s ease;
+}
+
+.custom-dropdown:hover {
+  box-shadow: 0 0 10px rgba(115,172,255,0.4),
+              inset 0 0 6px rgba(0, 0, 0, 0.094);
+  transform: scale(1.01);
+}
+
+.custom-dropdown:active {
+  transform: scale(0.98);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.custom-dropdown .options {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  background: transparent;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.081),
+              inset 0 0 3px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(255,255,255,0.64);
+  border-top: none;
+  backdrop-filter: blur(10px) saturate(1.3);
+  -webkit-backdrop-filter: blur(10px) saturate(1.3);
+  border-radius: 25px;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 10px;
+  z-index: 999;
+  list-style: none;
+  padding: 0;
+}
+
+.custom-dropdown .options.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.custom-dropdown .options li {
+  padding: 10px 16px;
+  transition: all 0.25s ease;
+}
+
+.custom-dropdown .options li:hover {
+  background: rgba(161, 233, 255, 0.575);
+  box-shadow: 0 0 3px rgba(60, 148, 255, 0.723)
+}
+
+.custom-dropdown .options li.selected {
+  background: transparent;
+  box-shadow: inset 0 0 4px rgba(239,247,255,0.7);
+}
+
+
+/* Скрыть нативный <select> внутри кастомного дропдауна */
+.custom-dropdown select,
+.floating-group select,
+.order-form-group select {
+  position: absolute !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  z-index: -1 !important;
+}
+
+.toggle-wrapper {
+  width: calc(25% - 10px); /* Три в ряд, с запасом под отступы */
+  box-sizing: border-box;
+  min-width: 140px; /* Сделать минимальную ширину больше, чтобы текст влезал */
+  margin-bottom: 10px; /* Отступ снизу, чтобы между рядами было пространство */
+  display: inline-block; /* Чтобы три элемента шли в ряд */
+  vertical-align: top;
+}
+
+.toggle-wrapper:nth-child(4n) {
+  margin-right: 0;
+}
+
+/* Контейнер с фоном и отступами */
+.order-toggle-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 25px;
+  padding: 7px 7px 7px 7px;
+  color: #32758f;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05), inset 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.order-toggle-box:hover {
+  box-shadow: 0 0 10px rgba(115,172,255,0.4),
+              inset 0 0 6px rgba(0, 0, 0, 0.101);
+}
+
+.order-toggle-box:active {
+  transform: scale(0.98);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Подпись (переносится, не обрезается) */
+.order-toggle-box .toggle-label {
+  flex: 1;
+  word-break: break-word;
+  white-space: normal;
+  display: flex;          /* flex-контейнер для выравнивания */
+  align-items: center;    /* вертикальный центр */
+  justify-content: center; /* горизонтальный центр, если нужно */
+  text-align: center; 
+}
+
+
+/* Кнопка справа */
+.order-toggle-box .toggle-button {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.162);
+  border: 1px solid rgba(49, 49, 49, 0.162);
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.104);
+  transition: all 0.4s;
+}
+
+.order-toggle-box .toggle-button:hover {
+  border: 1px solid rgb(171, 189, 255);
+}
+
+/* Активное состояние */
+.order-toggle-box input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.order-toggle-box input[type="checkbox"]:checked ~ .toggle-button {
+  background: rgb(211, 235, 255);
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.907);
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.order-toggle-row-4 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

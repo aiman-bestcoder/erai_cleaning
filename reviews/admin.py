@@ -10,4 +10,7 @@ class ReviewAdmin(admin.ModelAdmin):
         models.Review.text.field.name,
         models.Review.is_visible_on_main.field.name,
         models.Review.name.field.name,
+        models.Review.source_name.field.name,
+        models.Review.link.field.name,
+        models.Review.source.field.name,
     )

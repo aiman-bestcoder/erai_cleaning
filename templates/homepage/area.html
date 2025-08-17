@@ -1,32 +1,37 @@
 {% load static %}
-<section class="cleaning-area">
-  <h2 class="section-title">Our Cleaning Areas</h2>
-  <div class="locations-container">
-    <div class="locations-grid">
-      <a href="https://maps.app.goo.gl/K2sdEVXFiL6J8UWs9" class="location-link" target="_blank" rel="noopener noreferrer">Fairfax</a>
-      <a href="https://maps.app.goo.gl/aMDh6de1RzMPAvwc9" class="location-link" target="_blank" rel="noopener noreferrer">Burke</a>
-      <a href="https://maps.app.goo.gl/FarvGNcNE8MEtVHT6" class="location-link" target="_blank" rel="noopener noreferrer">Springfield</a>
-      <a href="https://maps.app.goo.gl/DtQMZ6fg6EqCEQ6b6" class="location-link" target="_blank" rel="noopener noreferrer">Annandale</a>
-      <a href="https://maps.app.goo.gl/DpK5kgxDEwLB7Dsi8" class="location-link" target="_blank" rel="noopener noreferrer">Arlington</a>
-      <a href="https://maps.app.goo.gl/bvFLu1AZoTbwnRMv9" class="location-link" target="_blank" rel="noopener noreferrer">McLean</a>
-      <a href="https://maps.app.goo.gl/QmL6jpP1sShkcoib9" class="location-link" target="_blank" rel="noopener noreferrer">Potomac</a>
-      <a href="https://maps.app.goo.gl/mibKmX4YrD1zpq3M8" class="location-link" target="_blank" rel="noopener noreferrer">Reston</a>
-      <a href="https://maps.app.goo.gl/PzhbrYWcRWJS8Kx49" class="location-link" target="_blank" rel="noopener noreferrer">Herndon</a>
-      <a href="https://maps.app.goo.gl/AAf6gS4F6ikqcuWd8" class="location-link" target="_blank" rel="noopener noreferrer">Sterling</a>
-      <a href="https://maps.app.goo.gl/2ASgJvhn8sfQkAis7" class="location-link" target="_blank" rel="noopener noreferrer">Ashburn</a>
-      <a href="https://maps.app.goo.gl/nK1UbPGANqkD7aTe9" class="location-link" target="_blank" rel="noopener noreferrer">Broadlands</a>
-      <a href="https://maps.app.goo.gl/BGxMXR2qn1ux2YWX8" class="location-link" target="_blank" rel="noopener noreferrer">Brambleton</a>
-      <a href="https://maps.app.goo.gl/zNzntQk9FPfaUWd7A" class="location-link" target="_blank" rel="noopener noreferrer">Chantilly</a>
-      <a href="https://maps.app.goo.gl/UbCHtTuqVUjDu9ax8" class="location-link" target="_blank" rel="noopener noreferrer">Centreville</a>
-      <a href="https://maps.app.goo.gl/syoJ3uxXdMogCnwGA" class="location-link" target="_blank" rel="noopener noreferrer">Manassas Park</a>
-      <a href="https://maps.app.goo.gl/Z7xakvFwcAzsLsNE6" class="location-link" target="_blank" rel="noopener noreferrer">Manassas</a>
-      <a href="https://maps.app.goo.gl/XERZj4pwKxhEwH9DA" class="location-link" target="_blank" rel="noopener noreferrer">Bristow</a>
-      <a href="https://maps.app.goo.gl/4Bwtz5Cp3hnaRdPBA" class="location-link" target="_blank" rel="noopener noreferrer">Nokesville</a>
-      <a href="https://maps.app.goo.gl/vRcwA7aHfyLA1Nm89" class="location-link" target="_blank" rel="noopener noreferrer">Gainsville</a>
-      <a href="https://maps.app.goo.gl/iHEDnnb1sftfebyq9" class="location-link" target="_blank" rel="noopener noreferrer">Clifton</a>
-    </div>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d161406.45148885672!2d-77.31870952726128!3d38.90302592968114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1735609557327!5m2!1sen!2sus" width="600" height="400" style="border:0; border-radius: 35px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<section class="cleaning-area-wrapper">
+  <div class="cleaning-bg-wrapper">
+    <img src="{% static 'static_media/white_interior.png' %}" alt="Blurred background" class="cleaning-area-bg">
+  </div>
+  <div class="cleaning-area">
+    <h2 class="section-title">Our Cleaning Areas</h2>
+    <div class="locations-container">
+      <div class="locations-grid">
+        <a href="https://maps.app.goo.gl/K2sdEVXFiL6J8UWs9" class="location-link" target="_blank" rel="noopener noreferrer">Fairfax</a>
+        <a href="https://maps.app.goo.gl/aMDh6de1RzMPAvwc9" class="location-link" target="_blank" rel="noopener noreferrer">Burke</a>
+        <a href="https://maps.app.goo.gl/FarvGNcNE8MEtVHT6" class="location-link" target="_blank" rel="noopener noreferrer">Springfield</a>
+        <a href="https://maps.app.goo.gl/DtQMZ6fg6EqCEQ6b6" class="location-link" target="_blank" rel="noopener noreferrer">Annandale</a>
+        <a href="https://maps.app.goo.gl/DpK5kgxDEwLB7Dsi8" class="location-link" target="_blank" rel="noopener noreferrer">Arlington</a>
+        <a href="https://maps.app.goo.gl/bvFLu1AZoTbwnRMv9" class="location-link" target="_blank" rel="noopener noreferrer">McLean</a>
+        <a href="https://maps.app.goo.gl/QmL6jpP1sShkcoib9" class="location-link" target="_blank" rel="noopener noreferrer">Potomac</a>
+        <a href="https://maps.app.goo.gl/mibKmX4YrD1zpq3M8" class="location-link" target="_blank" rel="noopener noreferrer">Reston</a>
+        <a href="https://maps.app.goo.gl/PzhbrYWcRWJS8Kx49" class="location-link" target="_blank" rel="noopener noreferrer">Herndon</a>
+        <a href="https://maps.app.goo.gl/AAf6gS4F6ikqcuWd8" class="location-link" target="_blank" rel="noopener noreferrer">Sterling</a>
+        <a href="https://maps.app.goo.gl/2ASgJvhn8sfQkAis7" class="location-link" target="_blank" rel="noopener noreferrer">Ashburn</a>
+        <a href="https://maps.app.goo.gl/nK1UbPGANqkD7aTe9" class="location-link" target="_blank" rel="noopener noreferrer">Broadlands</a>
+        <a href="https://maps.app.goo.gl/BGxMXR2qn1ux2YWX8" class="location-link" target="_blank" rel="noopener noreferrer">Brambleton</a>
+        <a href="https://maps.app.goo.gl/zNzntQk9FPfaUWd7A" class="location-link" target="_blank" rel="noopener noreferrer">Chantilly</a>
+        <a href="https://maps.app.goo.gl/UbCHtTuqVUjDu9ax8" class="location-link" target="_blank" rel="noopener noreferrer">Centreville</a>
+        <a href="https://maps.app.goo.gl/syoJ3uxXdMogCnwGA" class="location-link" target="_blank" rel="noopener noreferrer">Manassas Park</a>
+        <a href="https://maps.app.goo.gl/Z7xakvFwcAzsLsNE6" class="location-link" target="_blank" rel="noopener noreferrer">Manassas</a>
+        <a href="https://maps.app.goo.gl/XERZj4pwKxhEwH9DA" class="location-link" target="_blank" rel="noopener noreferrer">Bristow</a>
+        <a href="https://maps.app.goo.gl/4Bwtz5Cp3hnaRdPBA" class="location-link" target="_blank" rel="noopener noreferrer">Nokesville</a>
+        <a href="https://maps.app.goo.gl/vRcwA7aHfyLA1Nm89" class="location-link" target="_blank" rel="noopener noreferrer">Gainsville</a>
+        <a href="https://maps.app.goo.gl/iHEDnnb1sftfebyq9" class="location-link" target="_blank" rel="noopener noreferrer">Clifton</a>
+      </div>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d161406.45148885672!2d-77.31870952726128!3d38.90302592968114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1735609557327!5m2!1sen!2sus" width="600" height="400" style="border:0; border-radius: 35px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </div>
 </section>

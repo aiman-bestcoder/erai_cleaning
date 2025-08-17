@@ -1,0 +1,99 @@
+.form-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 40px;
+  align-items: start;
+  margin-top: 40px;
+}
+
+.form-main-column {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.building-types-section {
+  color: transparent;
+}
+
+.building-types-container {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding: 20px 10px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+
+  /* Скрываем скроллбар кросс-браузерно */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.building-types-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+
+.building-card {
+  position: relative;
+  min-width: 120px;
+  min-height: 120px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #dff1ff, #ffffff);
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.071);
+  overflow: hidden;
+  scroll-snap-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+
+.building-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: filter 0.4s ease;
+}
+
+/* Надпись — центрированный блок */
+.building-glass-overlay {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: rgba(255, 255, 255, 0.198);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  padding: 18px 22px;
+  border-radius: 30px;
+  text-align: center;
+  aspect-ratio: 4 / 1;
+  color: #013b65;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgb(255, 255, 255);
+  transition: all 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.building-card:hover .building-glass-overlay {
+  transform: translate(-50%, -55%) scale(1.05);
+}
+
+/* Название и описание внутри */
+.building-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+

@@ -1,39 +1,66 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<section class="feedback-section">
-  <div class="feedback-wrapper">
-    <h1 class="feedback-title">Contact us</h1>
-    <form method="post" action="{% url 'feedback:feedback' %}">
-      {% csrf_token %}
-      <div class="form-columns">
-        <div class="form-left">
-          <div class="form-group">
-            <input type="text" name="name" placeholder="Name" id="id_name">
-            <label for="id_name">Name</label>
-          </div>
-          <div class="form-group">
-            <input type="text" name="phone" placeholder="Phone" id="id_phone">
-            <label for="id_phone">Phone</label>
-          </div>
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Email" id="id_email">
-            <label for="id_email">Email</label>
-          </div>
-        </div>
-        <div class="form-right">
-          <div class="form-group">
-            <input type="text" name="subject" placeholder="Subject" id="id_subject">
-            <label for="id_subject">Subject</label>
-          </div>
-          <div class="form-group">
-            <textarea name="message" placeholder="Message" id="id_message"></textarea>
-            <label for="id_message">Message</label>
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="submit-btn">Send</button>
-    </form>
+<section class="erai-banner-wrapper">
+  <img src="{% static 'static_media/white_interior.png' %}" alt="Background" class="erai-banner-img">
+  <div class="erai-banner">
+    <h1>Contact Us</h1>
   </div>
 </section>
+{% include "feedback/feedback_home.html" %}
+<section class="contact-socials-section">
+  <img class="contact-socials-bg" src="{% static 'static_media/white_interior.png' %}">
+
+  <div class="contact-socials-content">
+    
+    <!-- Блок с контактами -->
+    <div class="contact-glass-box">
+      <h2>Contact Us</h2>
+      <a href="tel:+79991234567">📞 +7 (999) 123-45-67</a>
+      <a href="mailto:info@example.com">📧 info@example.com</a>
+    </div>
+
+    <!-- Блок с соцсетями -->
+    <div class="contact-glass-box">
+      <h2>Social Networks</h2>
+      <div class="social-icons">
+        <div class="social-icon-item">
+          <a href="#"><img src="{% static 'icons/telegram.svg' %}" alt="Telegram"></a>
+          <span>Telegram</span>
+        </div>
+        <div class="social-icon-item">
+          <a href="#"><img src="{% static 'icons/instagram.svg' %}" alt="Instagram"></a>
+          <span>Instagram</span>
+        </div>
+        <div class="social-icon-item">
+          <a href="#"><img src="{% static 'icons/whatsapp.svg' %}" alt="WhatsApp"></a>
+          <span>WhatsApp</span>
+        </div>
+        <div class="social-icon-item">
+          <a href="#"><img src="{% static 'icons/facebook.svg' %}" alt="Facebook"></a>
+          <span>Facebook</span>
+        </div>
+        <div class="social-icon-item">
+          <a href="#"><img src="{% static 'icons/vk.svg' %}" alt="VK"></a>
+          <span>VK</span>
+        </div>
+        <div class="social-icon-item">
+          <a href="#"><img src="{% static 'icons/youtube.svg' %}" alt="YouTube"></a>
+          <span>YouTube</span>
+        </div>
+        <div class="social-icon-item">
+          <a href="#"><img src="{% static 'icons/behance.svg' %}" alt="Behance"></a>
+          <span>Behance</span>
+        </div>
+        <div class="social-icon-item">
+          <a href="#"><img src="{% static 'icons/dribbble.svg' %}" alt="Dribbble"></a>
+          <span>Dribbble</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 {% endblock %}

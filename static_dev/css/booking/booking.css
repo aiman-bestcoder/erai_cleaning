@@ -1,0 +1,58 @@
+.offline-estimate-section {
+  position: relative;
+  width: 80%;
+  margin: 80px auto 120px;
+  height: 320px;
+  border-radius: 90px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.offline-estimate-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center; /* Центрируем картинку */
+  border-radius: inherit;
+  z-index: 1;
+  filter: blur(7px) brightness(1.1); /* Добавляем яркость */
+}
+
+.offline-estimate-content {
+  position: relative;
+  z-index: 2;
+  max-width: 480px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 30px 40px;
+  border-radius: 60px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px) saturate(1.3);
+  -webkit-backdrop-filter: blur(15px) saturate(1.3);
+  color: #013f6c;
+  text-align: center;
+  font-weight: 500;
+  user-select: text;
+}
+
+.offline-estimate-content h2 {
+  margin-bottom: 12px;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #01406c;
+  text-shadow: 0 2px 4px rgba(255,255,255,0.7);
+}
+
+.offline-estimate-content p {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: #01406c;
+}
+
+.offline-estimate-content strong {
+  color: #6759ce;
+  font-weight: 700;
+  text-shadow: 0 0 8px #6759ceaa;
+}

@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.html import mark_safe
+from django.utils.text import slugify
 from sorl.thumbnail import get_thumbnail
 
 
@@ -58,9 +59,19 @@ class Service(models.Model):
             service_thumbnail.url,
         )
 
+    slug = models.SlugField(max_length=50, unique=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.service_title)
+        super().save(*args, **kwargs)
+
     class Meta:
         verbose_name = "service"
         verbose_name_plural = "services"
+
+    def __str__(self):
+        return self.service_title
 
 
 class Extra(models.Model):
@@ -92,3 +103,6 @@ class Extra(models.Model):
         return mark_safe(
             extra_thumbnail.url,
         )
+
+    def __str__(self):
+        return self.extra_title

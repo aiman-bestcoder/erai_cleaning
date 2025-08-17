@@ -5,7 +5,7 @@
     width: 475px;
     height: 60px;
     border-radius: 30px;
-    background: rgba(196, 220, 255, 0.45);
+    background: #8cd7ff73;
     backdrop-filter: blur(4px);
     transition: all 0.4s ease;
     z-index: 1000;
@@ -81,9 +81,11 @@
     font-size: 16px;
     padding: 10px;
     font-weight: 600;
-    transition: transform 0.3s ease;
+    transition: transform 0.35s ease, color 0.35s ease;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
 }
 
 .nav-links a:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
 }

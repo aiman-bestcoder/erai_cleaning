@@ -1,0 +1,105 @@
+.after-intro-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  padding: 40px 20px;
+  overflow: hidden;
+  margin-bottom: 60px;
+  margin-top: 50px;
+}
+
+/* Фоновое фото только для этой секции */
+.after-intro-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/static/static_media/reviews_image.png');
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+.after-intro-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: scale(0.955);
+  box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.203);
+  border: 1px solid rgb(255, 255, 255);
+  z-index: 1;
+}
+
+/* Стеклянный блок */
+.after-intro-glass {
+  position: relative;
+  backdrop-filter: blur(10px) saturate(1.3);
+  background: #ffffff33;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.054);
+  border-radius: 95px;
+  padding: 60px;
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  color: #2a53a3;
+  animation: after-intro-fade-in 1s ease-out forwards;
+  transform: translateY(30px);
+  opacity: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.after-intro-textbox {
+  position: relative;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.289);
+  border-radius: 55px;
+  margin-top: 25px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #000e66;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.after-intro-textbox::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/static/static_media/reviews_image.png');
+  background-size: cover;
+  background-position: center;
+  background: rgba(246, 249, 255, 0.734);
+  filter: blur(40px) saturate(1.3);
+  transform: scale(1.875) translateY(-30px);
+  z-index: -1;
+  opacity: 1;
+}
+
+/* Эффект появления */
+@keyframes after-intro-fade-in {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.after-intro-line {
+  width: 120px;
+  height: 4px;
+  background: #5fddf7;
+  margin: 0 auto 28px;
+  border-radius: 2px;
+  box-shadow: 0 0 8px #5fddf7;
+}
+
+.after-intro-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #2a53a3;
+  position: relative;
+  z-index: 2;
+}

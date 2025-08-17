@@ -9,7 +9,7 @@
     	<a href="{% url 'about:about' %}">About</a>
 		{% endif %}
 		{% if request.resolver_match.view_name != 'order:order' %}
-    	<a href="{% url 'order:order' %}">Book Now</a>
+    	<a href="{% url 'order:order_create' %}">Book Now</a>
 		{% endif %}
 		{% if request.resolver_match.view_name != 'catalog:catalog' %}
     	<a href="{% url 'catalog:catalog' %}">Services</a>

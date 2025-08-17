@@ -2,7 +2,10 @@
   text-align: center;
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* чтобы заголовок не обрезался */
+  padding-top: 80px;
+  min-height: 400px;
+  z-index: 0;
 }
 
 .reviews-section .form-group label {
@@ -17,33 +20,69 @@
 }
 
 .reviews-title {
-  color: #01406c;
-  font-size: 4rem;
-  font-weight: 520;
-  margin-bottom: 20px;
+  position: absolute;
+  top: 0.8em;
+  left: 15%;
+  font-size: 2.6em;
+  font-weight: 600;
+  padding: 14px 24px;
+  color: #013f6cc7;
+  border-radius: 60px;
+  background: hsla(201, 100%, 87%, 0.451);
+  backdrop-filter: blur(10px) saturate(1.3);
+  -webkit-backdrop-filter: blur(10px) saturate(1.3);
+  border: 1px solid #dcf3ffb9;
+  white-space: nowrap;
+  z-index: 12;
   opacity: 0;
-  transform: translateY(30px);
   transition: opacity 0.5s ease, transform 0.5s ease;
-  position: relative;
-  z-index: 2;
 }
 
 .reviews-title.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(-50%, 0);
+}
+
+.reviews-background-cropper {
+  position: absolute;
+  top: 80px; /* совпадает с верхом контейнера */
+  left: 0;
+  width: 100%;
+  height: 400px; /* высота видимой области */
+  overflow: hidden; /* обрезаем всё, что выходит за рамки */
+  z-index: 0; /* ниже карточек */
+}
+
+.reviews-background {
+  position: absolute;
+  left: 0;
+  top: -50%;
+  width: 100%;
+  height: 600px;
+  background: url('/static/static_media/reviews_image.png') center/cover no-repeat fixed;
+  will-change: transform;
+  transform: translateZ(0); /* аппаратное ускорение */
+  pointer-events: none;
+}
+
+.reviews-wrapper {
+  position: relative;
+  box-shadow: inset 0 1px 4px #00000034, inset 0 -1px 4px #00000034;
+  height: 400px;
+  border: 1px solid #ffffffd6;
+  width: 102%;
+  left: -2px;
 }
 
 .reviews-container {
   width: 100%;
-  height: 450px;
+  height: 400px;
   display: flex;
   gap: 20px;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
-  box-shadow:
-    inset 0 1px 4px #00000034,
-    inset 0 -1px 4px #00000034;
+  background-color: transparent;
   transition: transform 1s ease;
   margin-bottom: 50px;
   position: relative;
@@ -55,47 +94,39 @@
   z-index: 2;
 }
 
-.reviews-container .reviews-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  opacity: 0.6;
-  pointer-events: none;
-}
 
 .reviews-container::-webkit-scrollbar {
   display: none;
 }
 
 .review-card {
+  flex: 0 0 auto;
   will-change: transform, opacity, scale, box-shadow;
   margin-top: 20px;
   margin-bottom: 20px;
-  min-width: 450px;
-  height: 350px;
-  border-radius: 75px;
+  min-width: 350px;
+  height: 270px;
+  border-radius: 65px;
+  aspect-ratio: 1/5;
   scroll-snap-align: center;
   opacity: 0;
   transform: translateY(30px) translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
-  transition: opacity 0.5s ease, transform 0.5s ease, scale 0.4s ease-in-out, box-shadow 0.5s ease-in-out;
+  transition: opacity 0.5s ease, transform 0.35s ease, scale 0.35s ease-in-out, box-shadow 0.5s ease-in-out;
   position: relative;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 30px;
 
-  background: rgba(196, 220, 255, 0.28);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(225, 242, 255, 0.4);
+  background: #8cd7ff73;
+  backdrop-filter: blur(10px) saturate(1.3);
+  -webkit-backdrop-filter: blur(10px) saturate(1.3);
+  border: 1px solid #dcf3ffb9;
   z-index: 2;
+  text-decoration: none;
+  color: inherit;
 }
 
 .reviews-container .review-card:last-child {
@@ -117,25 +148,96 @@
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Пружинистый эффект */
 }
 
-.review-card .profile-name {
-  font-size: 1.5rem;
-  font-weight: bold;
+/* Хедер с фото и именем */
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-bottom: 8px;
+}
+
+.review-header::after {
+  content: "";
+  position: absolute;
+  margin-top: 80px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: #d7f4ff73;
+}
+
+/* Фото в круге */
+.review-logo {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fff;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Имя в овале */
+.review-name {
   color: #01406c;
-  margin-top: 20px;
+  font-weight: 600;
+  font-size: 1.8rem;
+  padding: 6px 8px;
+  border-radius: 25px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
 
-.review-card .profile-title {
-  font-size: 1rem;
+.review-title {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  font-size: 1.05rem;
   font-style: italic;
-  color: #c99dd6;
-  margin: 10;
+  color: #335380;
+  margin-top: -20px;
+  white-space: nowrap;
 }
 
-.review-card .review-text {
-  font-size: 1.35rem;
+/* Появление титла при наведении на карточку */
+.review-card:hover .review-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.review-text-box {
+  background-color: #d7f4ff73;
+  border-radius: 35px;
+  padding: 14px 18px;
   color: #32758f;
-  text-align: left;
-  margin: 30px;
-  text-overflow: ellipsis;
+  font-size: 0.95rem;
   line-height: 1.5;
+  text-align: left;
+  margin-top: auto;
+  height: 60%;
+  overflow: auto;
+}
+
+@media (max-width: 500px) {
+  .review-card {
+    min-width: 85%;
+    height: auto;
+    padding: 20px;
+    border-radius: 40px;
+  }
+
+  .reviews-container {
+    padding: 20px 15px 80px; /* чуть меньше паддинги на мобилках */
+  }
 }

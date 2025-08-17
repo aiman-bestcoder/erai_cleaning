@@ -2,42 +2,115 @@
 {% load static %}
 
 {% block content %}
-<div class="about-wrapper">
-  <div class="glass-container">
-    <h1 class="about-title">About ERAI Cleaning</h1>
-    <p class="about-text">
-      ERAI Cleaning was born from experience — built by professionals who’ve worked in the industry and understand what it means to care for a space like it's your own.
-      <br><br>
-      We believe that cleaning is not just a service, but a trust. That’s why every project we take on — whether it's a cozy café, a high-traffic office, or a new home — is handled with the same level of precision, discretion, and pride.
-    </p>
+<section class="erai-banner-wrapper">
+  <img src="{% static 'static_media/white_interior.png' %}" alt="Background" class="erai-banner-img">
+  <div class="erai-banner">
+    <h1>We Are ERAI</h1>
+  </div>
+</section>
 
-    <div class="about-section">
-      <h2 class="section-title">Our Values</h2>
-      <ul class="about-list">
-        <li><strong>✨ Excellence:</strong> every corner, every surface, perfectly done.</li>
-        <li><strong>🕊️ Simplicity:</strong> booking and communication made easy.</li>
-        <li><strong>🌿 Care:</strong> eco-conscious practices that protect your health and the environment.</li>
-        <li><strong>💎 Transparency:</strong> honest pricing, no surprises.</li>
-      </ul>
-    </div>
 
-    <div class="about-section">
-      <h2 class="section-title">Why ERAI?</h2>
-      <p class="about-text">
-        We’ve worked from the ground up — from cleaners ourselves to founders who know every detail. That’s why our clients stay with us — because they see the difference in how we clean, how we talk, and how we care.
-        <br><br>
-        Whether you're a business owner looking for reliable cleaning, or someone who simply wants to come home to fresh air and gleaming floors — we're here for you.
-      </p>
-    </div>
-
-    <div class="founder-note">
-      <h2 class="section-title">A Note from the Founder</h2>
-      <p class="about-text">
-        "I started ERAI Cleaning because I wanted to bring care back into cleaning. After working in the industry myself, I saw what was missing — empathy, pride, and consistency. Today, we’re not just offering cleaning services, we’re building long-term relationships with clients who value quality and peace of mind."  
-        <br><br>
-        — Aiman Yusupzhanov, Founder of ERAI Cleaning
+<section id="about_we" class="about-intro-section">
+  <img src="{% static 'static_media/reviews_image.png' %}" alt="Background" class="about-bg">
+  <h2 class="section-heading">Meet the Minds Behind ERAI</h2>
+  <div class="intro-text">
+    <div class="intro-text-box">
+      <p>
+        We’re not just a team — we’re a family of creators united by clarity, ambition,
+        and sharp aesthetic vision. Everything we build shines.
       </p>
     </div>
   </div>
-</div>
+
+  <div class="intro-carousel">
+      <button class="intro-carousel-nav prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <path d="M19 9L11 18L19 27" stroke="#013f6cc7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="intro-carousel-track">
+        <div class="intro-ghost-slide"></div>
+        <div class="intro-carousel-slide"><img src="{% static 'static_media/white_interior.png' %}" alt="Team 1"></div>
+        <div class="intro-carousel-slide"><img src="{% static 'static_media/reviews_image.png' %}" alt="Team 2"></div>
+        <div class="intro-carousel-slide"><img src="{% static 'static_media/homepage.jpg' %}" alt="Team 3"></div>
+        <div class="intro-ghost-slide"></div>
+      </div>
+      <button class="intro-carousel-nav next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <path d="M17 9L25 18L17 27" stroke="#013f6cc7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+  </div>
+</section>
+<section class="slogan-section">
+  <div class="slogan-content">
+    <h2 class="slogan-text">Where Shine Is a Must</h2>
+    <div class="after-slogan-content">
+      <p>Every detail matters — from the first pixel to the last interaction. We craft experiences that resonate.</p>
+    </div>
+    <img src="{% static 'static_media/white_interior.png' %}" alt="Slogan Background" class="slogan-bg" />
+  </div>
+</section>
+
+
+<section id="about_family_business" class="after-circles-section">
+  <img src="{% static 'static_media/white_interior.png' %}" alt="Background" class="after-circles-bg">
+  <div class="after-circles-shadow"></div>
+  <div class="team-circle-photos">
+    <div class="circle-member">
+      <img src="{% static 'static_media/reviews_image.png' %}" alt="Member 1">
+      <p>Aiman</p>
+    </div>
+    <div class="circle-member">
+      <img src="{% static 'static_media/reviews_image.png' %}" alt="Member 2">
+      <p>Papa</p>
+    </div>
+    <div class="circle-member">
+      <img src="{% static 'static_media/reviews_image.png' %}" alt="Member 3">
+      <p>Mama</p>
+    </div>
+  </div>
+
+  <div class="after-circles-content">
+    <h2>We're Just Getting Started</h2>
+    <p>With bold vision and unwavering precision, we continue pushing boundaries.</p>
+  </div>
+</section>
+
+
+<section id="about_why_us" class="glass-end-section">
+  <div class="glass-section-heading">Why ERAI</div>
+  <img src="{% static 'static_media/white_interior.png' %}" alt="Background" class="glass-bg">
+
+  <div class="glass-icons-wrapper">
+    <div class="glass-icon-block">
+      <div class="glass-icon"><img src="{% static 'icons/1.svg' %}" alt="icon 1"></div>
+      <div class="glass-icon-label">Design</div>
+    </div>
+    <div class="glass-icon-block">
+      <div class="glass-icon"><img src="{% static 'icons/2.svg' %}" alt="icon 2"></div>
+      <div class="glass-icon-label">Detail</div>
+    </div>
+    <div class="glass-icon-block">
+      <div class="glass-icon"><img src="{% static 'icons/3.svg' %}" alt="icon 3"></div>
+      <div class="glass-icon-label">Trust</div>
+    </div>
+    <div class="glass-icon-block">
+      <div class="glass-icon"><img src="{% static 'icons/4.svg' %}" alt="icon 4"></div>
+      <div class="glass-icon-label">Speed</div>
+    </div>
+    <div class="glass-icon-block">
+      <div class="glass-icon"><img src="{% static 'icons/5.svg' %}" alt="icon 5"></div>
+      <div class="glass-icon-label">Vision</div>
+    </div>
+  </div>
+
+  <div class="glass-content">
+    <h2>Built on Vision, Driven by Detail</h2>
+    <p>At ERAI, every interaction is designed with meaning. Our vision is not just seen — it’s felt.</p>
+  </div>
+</section>
+
+<script src="{% static 'js/gallery.js' %}"></script>
+<script src="{% static 'js/about.js' %}"></script>
 {% endblock %}

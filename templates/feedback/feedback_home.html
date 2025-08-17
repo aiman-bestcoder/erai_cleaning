@@ -1,35 +1,44 @@
 <section class="feedback-section">
-  <div class="feedback-wrapper">
-    <h1 class="feedback-title">Contact us</h1>
-    <form method="post" action="{% url 'feedback:feedback' %}">
+  <div class="feedback-left">
+    <div class="feedback-glass">
+      <h1>Contact us</h1>
+      <div class="feedback-info-box">
+        <p>We’re here to help and answer any question you might have. We look forward to hearing from you.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="feedback-right">
+    <form method="post" action="{% url 'feedback:feedback' %}" class="feedback-form">
       {% csrf_token %}
-      <div class="form-columns">
-        <div class="form-left">
-          <div class="form-group">
-            <input type="text" name="name" placeholder="Name" id="id_name">
-            <label for="id_name">Name</label>
-          </div>
-          <div class="form-group">
-            <input type="text" name="phone" placeholder="Phone" id="id_phone">
-            <label for="id_phone">Phone</label>
-          </div>
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Email" id="id_email">
-            <label for="id_email">Email</label>
-          </div>
+      <div class="feedback-form-row">
+        <div class="feedback-form-group">
+          <input type="text" name="name" placeholder=" " id="id_name">
+          <label for="id_name">Name</label>
         </div>
-        <div class="form-right">
-          <div class="form-group">
-            <input type="text" name="subject" placeholder="Subject" id="id_subject">
-            <label for="id_subject">Subject</label>
-          </div>
-          <div class="form-group">
-            <textarea name="message" placeholder="Message" id="id_message"></textarea>
-            <label for="id_message">Message</label>
-          </div>
+        <div class="feedback-form-group">
+          <input type="text" name="phone" placeholder=" " id="id_phone">
+          <label for="id_phone">Phone</label>
         </div>
       </div>
-      <button type="submit" class="submit-btn">Send</button>
+      
+      <div class="feedback-form-row">
+        <div class="feedback-form-group">
+          <input type="email" name="email" placeholder=" " id="id_email">
+          <label for="id_email">Email</label>
+        </div>
+        <div class="feedback-form-group">
+          <input type="text" name="subject" placeholder=" " id="id_subject">
+          <label for="id_subject">Subject</label>
+        </div>
+      </div>
+      
+      <div class="feedback-form-group feedback-full-width">
+        <textarea name="message" placeholder=" " id="id_message"></textarea>
+        <label for="id_message">Message</label>
+      </div>
+      
+      <button type="submit" class="feedback-submit-btn">Send</button>
     </form>
   </div>
 </section>

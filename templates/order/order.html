@@ -1,142 +1,189 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="order-form-wrapper">
-	<form method="post" action="{% url 'catalog:order_create' %}" id="order-form" class="order-form-layout order-form">
-	  {% csrf_token %}
-  
-	  <div class="order-row-4">
-		  <div class="order-form-group">
-			<label for="id_area">Area (sqft)</label>
-            {{ order_form.area }}
-		  </div>
-		  <div class="order-form-group">
-        	<label for="id_room_type">Building Type</label>
-        	<div class="custom-dropdown" data-name="room_type">
-        	  <div class="selected">Choose Building Type</div>
-        	  <ul class="options">
-        	    <li data-value="apartment">Apartment</li>
-        	    <li data-value="house">House</li>
-        	    <li data-value="townhouse">Townhouse</li>
-        	    <li data-value="office">Office</li>
-        	  </ul>
-        	  <select name="room_type" id="room_type" style="display:none;">
-        	    <option value="apartment">Apartment</option>
-        	    <option value="house">House/option>
-        	    <option value="townhouse">Townhouse</option>
-        	    <option value="office">House</option>
-        	  </select>
-        	</div>
-      </div>
-      <div class="order-form-group">
-        <label for="service_type">Service type</label>
-        <div class="custom-dropdown" data-name="service_type">
-          <div class="selected">Select service</div>
-          <ul class="options">
-            <li data-value="standard">Standard</li>
-            <li data-value="deep">Deep</li>
-            <li data-value="moving">Moving</li>
-          </ul>
-          <select name="service_type" id="service_type" style="display: none;">
-            <option value="standard">Standard</option>
-            <option value="deep">Deep</option>
-            <option value="moving">Moving</option>
-          </select>
-        </div>
-      </div>
-	  </div>
-  
-	  <div class="order-row-4">
-		  <div class="order-form-group">
-		    {{ order_form.num_rooms.label_tag }} {{ order_form.num_rooms }}
-		  </div>
-		  <div class="order-form-group">
-		    {{ order_form.num_bathrooms.label_tag }} {{ order_form.num_bathrooms }}
-		  </div>
-      <div class="order-form-group">
-        <label for="id_frequency">Cleaning Velocity</label>
-        <div class="custom-dropdown" data-name="frequency">
-          <div class="selected">Choose</div>
-          <ul class="options">
-            <li data-value="once">One-time</li>
-            <li data-value="weekly">Weekly</li>
-            <li data-value="biweekly">Biweekly</li>
-            <li data-value="monthly">Monthly</li>
-          </ul>
-          <select name="frequency" id="frequency" style="display:none;">
-            <option value="once">One-time</option>
-            <option value="weekly">Weekly</option>
-            <option value="biweekly">Biweekly</option>
-            <option value="monthly">Monthly</option>
-          </select>
-        </div>
-      </div>
-	  </div>
-  
-	  <fieldset class="order-fieldset">
-		<legend class="order-legend">Extras</legend>
-		<div class="order-row-4">
-		  <div class="order-form-group">
-			<label class="order-toggle">
-			  {{ order_form.clean_windows }} <span class="order-slider"></span> {{ order_form.clean_windows.label }}
-			</label>
-		  </div>
-		  <div class="order-form-group">
-			<label class="order-toggle">
-			  {{ order_form.clean_sills }} <span class="order-slider"></span> {{ order_form.clean_sills.label }}
-			</label>
-		  </div>
-		  <div class="order-form-group">
-			<label class="order-toggle">
-			  {{ order_form.clean_cabinets }} <span class="order-slider"></span> {{ order_form.clean_cabinets.label }}
-			</label>
-		  </div>
-		  <div class="order-form-group">
-			<label class="order-toggle">
-			  {{ order_form.clean_fridge }} <span class="order-slider"></span> {{ order_form.clean_fridge.label }}
-			</label>
-		  </div>
-		  <div class="order-form-group">
-			<label class="order-toggle">
-			  {{ order_form.clean_oven }} <span class="order-slider"></span> {{ order_form.clean_oven.label }}
-			</label>
-		  </div>
-		  <div class="order-form-group">
-			<label class="order-toggle">
-			  {{ order_form.clean_microwave }} <span class="order-slider"></span> {{ order_form.clean_microwave.label }}
-			</label>
-		  </div>
-		  <div class="order-form-group">
-			<label class="order-toggle">
-			  {{ order_form.clean_dishwasher }} <span class="order-slider"></span> {{ order_form.clean_dishwasher.label }}
-			</label>
-		  </div>
-		  <div class="order-form-group">
-			<label class="order-toggle">
-			  {{ order_form.clean_terrace }} <span class="order-slider"></span> {{ order_form.clean_terrace.label }}
-			</label>
-		  </div>
-		  <div class="order-form-group">
-			<label class="order-toggle">
-			  {{ order_form.clean_blinds }} <span class="order-slider"></span> {{ order_form.clean_blinds.label }}
-			</label>
-		  </div>
-      <div class="order-form-group">
-		    <label class="order-toggle">
-		  	  {{ order_form.clean_carpet }} <span class="order-slider"></span> {{ order_form.clean_carpet.label }}
-		    </label>
-		  </div>
-		  <div class="order-form-group">
-        <label for="id_carpet_area">Carpet Area (sqft)</label>
-		    {{ order_form.carpet_area }}
-		  </div>
-		</div>
-	  </fieldset>
-	  
-	  <p class="order-price-text">Price: $<span id="priceValue">0.00</span></p>
-	  <button type="submit" class="order-submit-btn">Book Now</button>
-	</form>
+<section class="erai-banner-wrapper">
+  <img src="{% static 'static_media/white_interior.png' %}" alt="Background" class="erai-banner-img">
+  <div class="erai-banner">
+    <h1>Booking</h1>
   </div>
-  <script src="{% static 'js/order.js' %}"></script>
-  <script src="{% static 'js/services_window.js' %}"></script>
+</section>
+<div class="order-form-title">Booking Form</div>
+<div class="order-form-wrapper">
+  <form method="post" action="{% url 'order:order_create' %}" id="order-form" class="order-form-layout order-form">
+    {% csrf_token %}
+
+    <div class="order-form-left">
+
+      <!-- Верхняя строка: Имя и Email -->
+      <div class="order-top-row">
+        <div class="floating-group">
+          {{ booking_form.name }}
+          <label for="{{ booking_form.name.id_for_label }}" class="floating-label">
+            Your name
+          </label>
+        </div>
+        <div class="floating-group">
+          {{ booking_form.email }}
+          <label for="{{ booking_form.email.id_for_label }}" class="floating-label">
+            Email
+          </label>
+        </div>
+      </div>
+
+      <!-- Средняя часть: площадь и dropdown’ы -->
+      <div class="order-middle-row">
+        <div class="floating-group">
+          {{ order_form.area }}
+          <label for="{{ order_form.area.id_for_label }}" class="floating-label">
+            Area (sqft)
+          </label>
+        </div>
+        <div class="order-form-group">
+          <div class="custom-dropdown" data-name="room_type">
+            <div class="selected">Select Building Type</div>
+            <ul class="options">
+              <li data-value="apartment">Apartment</li>
+              <li data-value="house">House</li>
+              <li data-value="townhouse">Townhouse</li>
+              <li data-value="office">Office</li>
+            </ul>
+            {{ order_form.room_type }}
+          </div>
+        </div>
+        <div class="order-form-group">
+          <div class="custom-dropdown" data-name="service_type">
+            <div class="selected">Select Service</div>
+            <ul class="options">
+              {% for service in order_form.fields.service_type.queryset %}
+                <li data-value="{{ service.pk }}">{{ service.service_title }}</li>
+              {% endfor %}
+            </ul>
+            {{ order_form.service_type }}
+          </div>
+        </div>
+        <div class="order-form-group">
+          <div class="custom-dropdown" data-name="frequency">
+            <div class="selected">Select Velocity</div>
+            <ul class="options">
+              <li data-value="once">One-time</li>
+              <li data-value="weekly">Weekly</li>
+              <li data-value="biweekly">Biweekly</li>
+              <li data-value="monthly">Monthly</li>
+            </ul>
+            {{ order_form.frequency }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Нижняя часть -->
+      <div class="order-bottom-row order-bottom-flex">
+        <div class="order-bottom-left">
+          <div class="order-row-3">
+            <div class="floating-group">
+              {{ order_form.num_rooms }}
+              <label for="{{ order_form.num_rooms.id_for_label }}" class="floating-label">
+                Rooms
+              </label>
+            </div>
+            <div class="floating-group">
+              {{ order_form.num_bathrooms }}
+              <label for="{{ order_form.num_bathrooms.id_for_label }}" class="floating-label">
+                Bathrooms
+              </label>
+            </div>
+            <div class="floating-group">
+              {{ order_form.carpet_area }}
+              <label for="{{ order_form.carpet_area.id_for_label }}" class="floating-label">
+                Carpet Area (sqft)
+              </label>
+            </div>
+          </div>
+
+          <fieldset class="order-fieldset">
+            <legend class="order-legend">Extras</legend>
+            <div class="order-toggle-row-4">
+              {% for checkbox in order_form.extras %}
+                <div class="toggle-wrapper">
+                  <label class="order-toggle-box" for="{{ checkbox.id_for_label }}">
+                    {{ checkbox.tag }}
+                    <span class="toggle-label">{{ checkbox.choice_label }}</span>
+                    <span class="toggle-button"></span>
+                  </label>
+                </div>
+              {% endfor %}
+              <div class="order-form-group toggle-wrapper">
+                <label class="order-toggle-box">
+                  <span class="toggle-label">{{ order_form.carpet.label }}</span>
+                  {{ order_form.carpet }}
+                  <span class="toggle-button"></span>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+
+
+
+          <div class="order-row-4 order-bottom-datetime">
+            <div class="floating-group">
+              {{ booking_form.date }}
+              <label for="{{ booking_form.date.id_for_label }}" class="floating-label">
+                Preferred date
+              </label>
+            </div>
+            <div class="floating-group">
+              {{ booking_form.time }}
+              <label for="{{ booking_form.time.id_for_label }}" class="floating-label">
+                Preferred time
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Комментарий -->
+        <div class="order-bottom-right">
+          <div class="floating-group">
+            {{ booking_form.message }}
+            <label for="{{ booking_form.message.id_for_label }}" class="floating-label">
+              Special wishes
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Кнопка Book Now -->
+      <div class="order-submit-wrapper">
+        <button type="submit" class="order-submit-btn">Book Now</button>
+      </div>
+    </div>
+
+    <!-- Правая колонка: Order Summary -->
+    <div class="order-form-right">
+      <div id="virtual-check" class="virtual-check">
+        <h3>Order Summary</h3>
+        <ul id="check-details"></ul>
+        <div class="check-total">
+          Total: <span id="check-total-price">$0.00</span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<section class="offline-estimate-section">
+  <img class="offline-estimate-bg" src="{% static 'static_media/white_interior.png' %}">
+  <div class="offline-estimate-content">
+    <h2>Offline Estimate Available</h2>
+    <p>
+      Or you can request an <strong>offline estimate</strong> — we’ll get back to you promptly!
+    </p>
+  </div>
+</section>
+
+<script>
+  const orderCreateUrl = "{% url 'order:order_create' %}";
+</script>
+<script src="{% static 'js/check.js' %}"></script>
+<script src="{% static 'js/order.js' %}"></script>
+<script>
+  const ajaxCalculatePriceUrl = "{% url 'order:ajax_calculate' %}";
+</script>
 {% endblock %}

@@ -1,15 +1,13 @@
 {% load static %}
-
+<h1 class="gallery-title">Our results</h1>
 <section class="gallery-carousel">
-  <img src="{% static 'static_media/homepage.jpg' %}" alt="Текстура фона" class="background-image">
-  <div class="overlay"></div>
-  <h1 class="gallery-title">Our results</h1>
   <button class="carousel-nav prev">
     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
       <path d="M19 9L11 18L19 27" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
   <div class="carousel-track">
+    <div class="carousel-slide ghost-slide"></div>
     {% for result in results %}
       <div class="carousel-slide">
         <img src="{{ result.results.url }}" alt="Gallery Image">

@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", default="dwwadjwdj")
 DEBUG_ENV = os.getenv("DJANGO_DEBUG", "true").lower()
 DEBUG = DEBUG_ENV in ("true", "yes", "1", "y", "t")
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*").split(",")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "").split(",")
 
 
 INSTALLED_APPS = [

@@ -3,6 +3,11 @@ from django.contrib import admin
 from catalog import models
 
 
+class ServiceIconInline(admin.TabularInline):
+    model = models.ServiceIcon
+    extra = 1
+
+
 @admin.register(models.Service)
 class ServiceAdmin(admin.ModelAdmin):
     list_display = (
@@ -12,6 +17,7 @@ class ServiceAdmin(admin.ModelAdmin):
         models.Service.service_price.field.name,
         models.Service.service_is_published.field.name,
     )
+    inlines = [ServiceIconInline]
     list_filter = (models.Service.service_is_published.field.name,)
     search_fields = (models.Service.service_title.field.name,)
 

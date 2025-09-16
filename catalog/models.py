@@ -106,3 +106,15 @@ class Extra(models.Model):
 
     def __str__(self):
         return self.extra_title
+
+
+class ServiceIcon(models.Model):
+    service = models.ForeignKey(Service, related_name="icons", on_delete=models.CASCADE)
+    svg_code = models.TextField(
+        help_text="Вставь сюда код SVG",
+        default="pipikaka"
+    )
+    text = models.CharField(max_length=100, blank=True)
+
+    def __str__(self):
+        return f"{self.service.service_title} - {self.text or 'SVG'}"

@@ -33,3 +33,12 @@
   font-size: 1.25rem;
   text-align: right;
 }
+
+@media (orientation: portrait) {
+  .virtual-check {
+    position: relative;
+    height: auto;
+    padding: 15px;
+    border-radius: 10px;
+  }
+}

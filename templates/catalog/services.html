@@ -3,18 +3,20 @@
 </div>
 
 <section class="services-section">
-  <div class="services-row">
-    {% for service in services %}
-      <a href="{% url 'catalog:catalog' %}#{{ service.slug }}" class="service-card">
-        <div class="service-image">
-          <img src="{{ service.service_thumbnail.url }}" alt="{{ service.service_title }}">
-        </div>
-        <div class="service-info">
-          <h3>{{ service.service_title }}</h3>
-          <p>{{ service.service_description }}</p>
-          <span class="price">Starting at {{ service.service_price }}$</span>
-        </div>
-      </a>
-    {% endfor %}
+  <div class="services-scroll-wrapper">
+    <div class="services-row">
+      {% for service in services %}
+        <a href="{% url 'catalog:catalog' %}#{{ service.slug }}" class="service-card">
+          <div class="service-image">
+            <img src="{{ service.service_thumbnail.url }}" alt="{{ service.service_title }}">
+          </div>
+          <div class="service-info">
+            <h3>{{ service.service_title }}</h3>
+            <p>{{ service.service_description }}</p>
+            <span class="price">Starting at {{ service.service_price }}$</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
   </div>
 </section>

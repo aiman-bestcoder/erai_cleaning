@@ -1,154 +1,170 @@
-.page-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 30px;
-  padding: 40px;
-  flex-wrap: nowrap;
-  box-sizing: border-box;
-}
-
-.side-column {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  width: 50%;
-}
-
-.catalog-section {
-  width: 50%;
-}
-
 .extras-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  margin-top: 70px;
-}
-
-.extras-title {
-  font-size: 2.7rem;
-  color: #01406c;
-  font-weight: 700;
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
-
-.extras-container {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  background: linear-gradient(0deg, #ffffff, #f1f9ff);
-  border-radius: 95px;
-  padding: 25px;
-  width: 95%;
-  box-shadow:
-    inset 0 1px 4px #00000013,
-    inset 0 -1px 4px #00000013;
-  scroll-behavior: smooth;
-}
-
-.extras-container::-webkit-scrollbar {
-  display: none;
-}
-
-/* 🟡 Округлость сохраняется при scale */
-.extra-card {
-  position: relative;
-  min-width: 270px;
-  height: 270px;
-  border-radius: 80px;
-  overflow: hidden;
-  scroll-snap-align: center;
-
-  background: rgba(196, 220, 255, 0.45);
-  backdrop-filter: blur(10px) saturate(1.3);
-  -webkit-backdrop-filter: blur(10px) saturate(1.3);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-
-.extra-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  transition: filter 0.4s;
-}
-
-.extra-card:hover .extra-image {
-  border-radius: 80px;
-}
-
-.extra-text-overlay {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -0%); /* Центрируем */
-  
-  width: 80%;
-  padding: 15px 20px;
-
-  background: rgba(196, 220, 255, 0.45);
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 45px;
-
+  padding: 10px;
+  border-radius: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  color: #01406c;
-  z-index: 1;
   text-align: center;
-  transition: all 0.5s ease;
+  background: linear-gradient(45deg, #ecf6ff, #e3f3ff);
+  box-shadow: inset 0 0 3px #00000010;
+  border: 1px solid rgba(225,242,255,0.18);
 }
 
-.extra-card:hover .extra-text-overlay {
-  transform: translate(-50%, -10%);
+/* ряд маленьких кружков выровнен по центру */
+.extras-rail {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 6px;
 }
 
-
-
-.extra-name {
-  font-size: 1.3rem;
-  font-weight: bold;
+/* круги чуть компактнее */
+.extra-chip {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: visible; /* тултип не обрезается */
+  position: relative;
+  cursor: pointer;
 }
 
-.extra-price {
-  font-size: 1rem;
-  font-style: italic;
-  color: #cde9ff;
+.extra-chip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-@media (max-width: 900px) {
-  .side-column,
-  .catalog-section {
-    width: 90vw;
+/* тултип — оставляем красивую анимацию (немного подрезанное время) */
+.extra-flyout {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px) scale(0.96);
+  background: rgba(255,255,255,0.96);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: var(--accent);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 999;
+  min-width: 110px;
+  transition: opacity 0.18s ease, transform 0.42s cubic-bezier(.16,1.15,.3,1), box-shadow .3s ease;
+}
+
+.extra-chip:hover .extra-flyout,
+.extra-chip.extra-open .extra-flyout {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+  pointer-events: auto;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.22), 0 0 10px rgba(173,216,255,0.6);
+}
+
+/* тултип: имя + цена */
+.extra-flyout-name { font-weight: 600; font-size: .95rem; margin-bottom: 4px; }
+.extra-flyout-price { font-size: .85rem; color: #32758f; font-weight: 500; }
+
+@media (orientation: portrait) {
+  .extras-section {
+    padding: 16px 0;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #ecf6ff, #e3f3ff);
+    box-shadow: inset 0 0 3px #00000010;
+    border: 1px solid rgba(225,242,255,0.18);
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Firefox */
+    scroll-snap-type: x mandatory;
+  }
+  .extras-section::-webkit-scrollbar {
+    display: none;
   }
 
-  .building-types-container {
-    gap: 12px;
+  .extras-rail {
+    display: inline-flex;
+    gap: 16px;
+    padding: 0 12px;
   }
 
-  .building-card {
-    min-width: 240px;
-    height: 240px;
+  .extra-chip {
+    flex: 0 0 auto;
+    width: 140px;
+    height: 140px;
+    border-radius: 40px;
+    position: relative;
+    cursor: pointer;
+    overflow: visible;
+    scroll-snap-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .building-name {
-    font-size: 1.2rem;
+  .extra-chip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 40px;
   }
 
-  .building-description {
+  /* стеклянная пилюля внутри карточки */
+  .extra-info {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    padding: 6px 10px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(8px) saturate(1.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.25s ease;
+    z-index: 2;
+  }
+
+  .extra-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--accent);
+    text-align: center;
+  }
+
+  .extra-price {
     font-size: 0.85rem;
+    color: #32758f;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  /* тултипы внутри карточки */
+  .extra-flyout {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px) scale(0.96);
+    background: rgba(208, 248, 255, 0.716);
+    -webkit-backdrop-filter: blur(5px) saturate(1.2);
+    padding: 8px 12px;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    color: var(--accent);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 999;
+    opacity: 1;
+    min-width: 100px;
+  }
+  .extra-chip:hover .extra-flyout,
+  .extra-chip.extra-open .extra-flyout {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+    pointer-events: auto;
   }
 }
-

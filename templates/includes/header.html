@@ -1,21 +1,21 @@
 {% load static %}
 <div class="header">
   <div class="logo">
-    <a href="/"><img src="/static/static_media/header%20logo.png" alt="Logo"></a>
+    <a href="/"><img src="/static/static_media/erai-logo-for-footer.png" alt="Logo"></a>
   </div>
   <nav class="nav-links">
     	<a href="{% url 'homepage:home' %}">Home</a>
 		{% if request.resolver_match.view_name != 'about:about' %}
-    	<a href="{% url 'about:about' %}">About</a>
+    	<a href="{% url 'about:about' %}">About Us</a>
 		{% endif %}
 		{% if request.resolver_match.view_name != 'order:order' %}
     	<a href="{% url 'order:order_create' %}">Book Now</a>
 		{% endif %}
 		{% if request.resolver_match.view_name != 'catalog:catalog' %}
-    	<a href="{% url 'catalog:catalog' %}">Services</a>
+    	<a href="{% url 'catalog:catalog' %}">Our Services</a>
 		{% endif %}
 		{% if request.resolver_match.view_name != 'feedback:feedback' %}
-    	<a href="{% url 'feedback:feedback' %}">Feedback</a>
+    	<a href="{% url 'feedback:feedback' %}">Contact Us</a>
 		{% endif %}
   </nav>
 </div>

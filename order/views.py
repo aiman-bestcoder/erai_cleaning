@@ -16,10 +16,11 @@ ROOM_TYPE_PRICES = {
 
 FREQUENCY_MULTIPLIERS = {
     "once": 1,
-    "weekly": 0.9,
-    "biweekly": 0.95,
-    "monthly": 0.97,
+    "weekly": 0.8,
+    "biweekly": 0.85,
+    "monthly": 0.9,
 }
+
 
 def calculate_price(data):
     S = int(data.get("area", 0))
@@ -111,12 +112,14 @@ class OrderView(View):
         context = {
             "order_form": forms.CleaningOrderForm(),
             "booking_form": forms.BookingRequestForm(),
+            "services": Service.objects.filter(service_is_published=True),
         }
         return render(request, self.template_name, context)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["booking_form"] = kwargs.get("booking_form") or forms.BookingRequestForm()
+        context["services"] = Service.objects.filter(service_is_published=True)
         return context
 
     def post(self, request, *args, **kwargs):

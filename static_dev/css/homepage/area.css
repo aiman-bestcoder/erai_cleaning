@@ -1,18 +1,21 @@
 .cleaning-area-wrapper {
   position: relative;
-  margin: 6em auto;
-  width: 85%;
-  border-radius: 105px;
+  margin: clamp(2em, 6vw, 6em) auto;
+  width: clamp(70%, 85%, 90%);
+  aspect-ratio: 16 / 9; /* фиксируем пропорции секции */
+  border-radius: clamp(40px, 10vw, 105px);
   border: 1px solid rgba(255, 255, 255, 0.479);
-  margin-top: 150px;
+  margin-top: clamp(60px, 12vh, 150px);
+  display: flex;
+  flex-direction: column;
 }
 
 .cleaning-area-wrapper::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 105px;
-  box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.399);
+  border-radius: clamp(40px, 10vw, 105px);
+  box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.49);
   z-index: 1; /* над блюром */
   pointer-events: none;
 }
@@ -21,7 +24,7 @@
 .cleaning-bg-wrapper {
   position: absolute;
   inset: 0;
-  border-radius: 105px;
+  border-radius: clamp(40px, 10vw, 105px);
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
@@ -35,20 +38,18 @@
   height: 100%;
   object-fit: cover;
   filter: brightness(1.5);
-  filter: blur(8px);
+  filter: blur(3px);
   z-index: 0;
   pointer-events: none;
 }
 
-/* КОНТЕНТ ПОВЕРХ */
 .cleaning-area {
-  position: relative;
-  z-index: 1;
-  padding: 50px 20px;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: clamp(15px, 5vh, 40px);
+  padding: clamp(20px, 5vw, 50px) clamp(10px, 3vw, 20px);
 }
 
 /* Анимация появления */
@@ -58,36 +59,36 @@
   transition: opacity 1s ease, transform 1s ease;
 }
 
-/* ЗАГОЛОВОК */
 .section-title {
   position: absolute;
-  top: -100px;
-  left: 33%;
-  font-size: 3.3em;
+  top: clamp(-70px, -13vh, -130px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(1.5em, 4vw, 3.3em);
   font-weight: 600;
   padding: 0.2em 1em;
   color: #004f88;
   z-index: 2;
+  white-space: nowrap;
 }
 
-/* СЕТКА ССЫЛОК */
 .locations-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex: 1; /* занимает всё пространство */
   gap: 20px;
   width: 100%;
 }
 
 .location-link {
   position: relative; 
-  font-size: 1.2rem;
+  font-size: clamp(0.8rem, 1.5vw, 1.2rem);
   color: #32758f;
   transition: color .3s;
   background: none;
   padding: 15px 8px;
   border-radius: 50%;
-  text-decoration: none; /* Убрали подчёркивание */
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .location-link:hover {
@@ -99,11 +100,10 @@
   grid-template-columns: repeat(3, 1fr);
   background: #c3eaff99;
   backdrop-filter: blur(15px) saturate(1.3);
-  border-radius: 75px;
-  padding: 60px;
+  border-radius: clamp(25px, 7vw, 75px);
+  padding: clamp(20px, 6vw, 60px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: #013f6c;
-  margin-left: 40px;
   width: 50%;
   text-align: center;
 }
@@ -120,14 +120,10 @@
   pointer-events: none;
 }
 
-/* КАРТА */
 .map-container {
-  position: relative;
+  flex: 1; /* высота карты = высота блока со словами */
   overflow: hidden;
-  width: 39%;
-  height: 520px;
-  border-radius: 60px;
-  margin-right: 45px;
+  border-radius: clamp(20px, 5vw, 60px);
 }
 
 .map-container iframe {
@@ -137,14 +133,73 @@
   border-radius: inherit;
 }
 
-/* Адаптив */
-@media (max-width: 768px) {
-  .locations-container { flex-direction: column; align-items: center; }
-  .locations-grid { grid-template-columns: repeat(2,1fr); width:100%; }
-  .map-container { width:100%; }
+@media (orientation: landscape) {
+  .locations-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .location-link:not(:nth-child(3n))::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #65a6bf75;
+    pointer-events: none;
+  }
 }
 
-@media (max-width: 480px) {
-  .locations-grid { grid-template-columns: 1fr; }
-  .map-container { width:100%; }
+/* Вертикальные экраны */
+@media (orientation: portrait) {
+  .cleaning-area-wrapper {
+    border-radius: 80px;
+  }
+
+  .cleaning-area-wrapper::after {
+    border-radius: 80px;
+  }
+
+  .cleaning-bg-wrapper {
+    border-radius: 80px;
+  }
+
+  .locations-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .locations-grid {
+    margin-top: -10px;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    margin-left: 0;
+    border-radius: 60px;
+  }
+
+  .location-link {
+    font-size: 1.2em;
+  }
+
+  /* убираем линии между словами */
+  .location-link::after {
+    display: none !important;
+  }
+
+  .map-container {
+    order: 2; /* карта уходит вниз */
+    width: 100%;
+    height: clamp(250px, 40vh, 500px);
+    margin: clamp(15px, 5vh, 40px) 0 0;
+    border-radius: 60px;
+    margin-bottom: -10px;
+  }
+}
+
+@media (max-width: 480px) and (orientation: portrait) {
+  .locations-grid {
+    grid-template-columns: 1fr;
+  }
 }

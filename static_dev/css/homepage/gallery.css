@@ -1,3 +1,10 @@
+.gallery-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .gallery-carousel {
   position: relative;
   min-height: 30vh;
@@ -9,7 +16,6 @@
   text-align: center;
   margin-top: 60px;
   margin-bottom: 40px;
-  overflow: hidden;
   box-shadow: inset 0 0 5px #00000058;
 }
 
@@ -172,4 +178,19 @@
   height: 100%;
   pointer-events: none; /* нельзя кликать */
   opacity: 0; /* невидим */
+}
+
+
+@media (orientation: portrait) {
+  .gallery-carousel {
+    min-height: 55vh; /* ещё больше для телефонов */
+  }
+
+  .carousel-slide {
+    flex: 0 0 80vw;
+  }
+
+  .gallery-title {
+    font-size: calc(5em * (100vw / 1600));
+  }
 }

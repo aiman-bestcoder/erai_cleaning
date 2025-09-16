@@ -4,9 +4,16 @@ from django.conf import settings
 from django.urls import reverse_lazy
 from feedback.forms import FeedbackForm
 from feedback.models import Feedback
+from catalog import models
 
 
 class FeedbackView(FormView):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['services'] = models.Service.objects.filter(service_is_published=True)
+        return context
+
     template_name = "feedback/feedback.html"
     form_class = FeedbackForm
     success_url = reverse_lazy("feedback:feedback")

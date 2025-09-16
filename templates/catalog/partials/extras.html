@@ -1,0 +1,14 @@
+{% load static %}
+<section class="extras-section">
+  <div class="extras-rail">
+    {% for extra in extras %}
+    <div class="extra-chip">
+      <img class="extra-chip-img" src="{{ extra.extra_thumbnail.url }}" alt="{{ extra.extra_title }}">
+      <div class="extra-flyout">
+        <div class="extra-flyout-name">{{ extra.extra_title }}</div>
+        <div class="extra-flyout-price">${{ extra.extra_price }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

@@ -2,77 +2,53 @@
 {% load static %}
 {% block content %}
 <section class="erai-banner-wrapper">
-  <img src="{% static 'static_media/white_interior.png' %}" alt="Background" class="erai-banner-img">
+  <img src="{% static 'static_media/services_head.jpg' %}" alt="Background" class="erai-banner-img">
   <div class="erai-banner">
     <h1>Services</h1>
   </div>
 </section>
-<div class="page-wrapper">
-  <section class="catalog-section">
-    <div class="catalog-shadow"></div>
 
-    <div class="catalog-content">
-      {% for service in services %}
-      <div class="service-block" id="{{ service.slug }}">
-        <img src="{{ service.service_thumbnail.url }}" alt="{{ service.service_title }}" class="service-img">
-        <div class="service-overlay"></div>
-        <div class="service-content">
-          <div class="service-title">{{ service.service_title }}</div>
-          <div class="service-description">{{ service.service_description }}</div>
-          <div class="service-price">Starting at {{ service.service_price }}$</div>
-          <div class="service-info-icon" data-info="{{ service.service_included|linebreaksbr }}">
-            <div class="service-info-text">{{ service.service_included|linebreaksbr }}</div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
+<div class="catalog-frame">
+  <div class="page-wrapper glass-frame">
 
-  </section>
-  <div class="side-column">
-    <section class="extras-section">
-      <h2 class="extras-title">Extras</h2>
-        <div class="extras-container">
-          {% for extra in extras %}
-            <div class="extra-card show">
-              <img class="extra-image" src="{{ extra.extra_thumbnail.url }}" alt="{{ extra.extra_title }}">
-              <div class="extra-text-overlay">
-                <div class="extra-name">{{ extra.extra_title }}</div>
-                <div class="extra-price">${{ extra.extra_price }}</div>
+    <!-- ЛЕВОЕ ОКНО: СЕРВИСЫ -->
+    <section class="catalog-section">
+      <div class="catalog-shadow"></div>
+      <div class="catalog-content">
+        {% for service in services %}
+        <div class="service-block" id="{{ service.slug }}">
+          <img src="{{ service.service_thumbnail.url }}" alt="{{ service.service_title }}" class="service-img">
+          <div class="service-content">
+            <div class="service-title">{{ service.service_title }}</div>
+            <div class="service-description">{{ service.service_description }}</div>
+            <div class="service-price">Starting at {{ service.service_price }}$</div>
+
+            <div class="service-cta">
+              <span class="main-icon">⭐</span>
+              <div class="icon-list">
+                {% for icon in service.icons.all %}
+                  <div class="icon" data-text="{{ icon.text }}">
+                    {{ icon.svg_code|safe }}   {# вставляем как inline-SVG #}
+                  </div>
+                {% endfor %}
               </div>
             </div>
-          {% endfor %}
-        </div>
-    </section>
-    <section class="building-types-section">
-      <h2 class="building-types-title">Types of Buildings We Clean</h2>
-      <div class="building-types-container">
-        <div class="building-card">
-          <img src="{% static 'static_media/white_interior.png' %}" alt="Residential" class="building-image">
-          <div class="building-glass-overlay">
-            <h3 class="building-name">Residential</h3>
+
+            <div class="service-included" hidden>
+              {{ service.service_included|linebreaksbr }}
+            </div>
           </div>
         </div>
-        <div class="building-card">
-          <img src="{% static 'static_media/white_interior.png' %}" alt="Residential" class="building-image">
-          <div class="building-glass-overlay">
-            <h3 class="building-name">Residential</h3>
-          </div>
-        </div>
-        <div class="building-card">
-          <img src="{% static 'static_media/white_interior.png' %}" alt="Residential" class="building-image">
-          <div class="building-glass-overlay">
-            <h3 class="building-name">Residential</h3>
-          </div>
-        </div>
-        <div class="building-card">
-          <img src="{% static 'static_media/white_interior.png' %}" alt="Residential" class="building-image">
-          <div class="building-glass-overlay">
-            <h3 class="building-name">Residential</h3>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </section>
+
+    <!-- ПРАВАЯ КОЛОНКА -->
+    <div class="side-column">
+      {% include "catalog/partials/extras.html" %}
+      {% include "catalog/partials/text_block.html" %}
+    </div>
+
   </div>
 </div>
 

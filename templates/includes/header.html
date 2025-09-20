@@ -4,18 +4,18 @@
     <a href="/"><img src="/static/static_media/erai-logo-for-footer.png" alt="Logo"></a>
   </div>
   <nav class="nav-links">
-    	<a href="{% url 'homepage:home' %}">Home</a>
+    	<a href="{% url 'homepage:home' %}">Main Page</a>
 		{% if request.resolver_match.view_name != 'about:about' %}
-    	<a href="{% url 'about:about' %}">About Us</a>
+    	<a href="{% url 'about:about' %}">About Team</a>
 		{% endif %}
 		{% if request.resolver_match.view_name != 'order:order' %}
     	<a href="{% url 'order:order_create' %}">Book Now</a>
 		{% endif %}
 		{% if request.resolver_match.view_name != 'catalog:catalog' %}
-    	<a href="{% url 'catalog:catalog' %}">Our Services</a>
+    	<a href="{% url 'catalog:catalog' %}">Cleaning Services</a>
 		{% endif %}
 		{% if request.resolver_match.view_name != 'feedback:feedback' %}
-    	<a href="{% url 'feedback:feedback' %}">Contact Us</a>
+    	<a href="{% url 'feedback:feedback' %}">Reach Erai</a>
 		{% endif %}
   </nav>
 </div>

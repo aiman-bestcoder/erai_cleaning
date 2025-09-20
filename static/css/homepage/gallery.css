@@ -191,6 +191,6 @@
   }
 
   .gallery-title {
-    font-size: calc(5em * (100vw / 1600));
+    font-size: 45px;
   }
 }

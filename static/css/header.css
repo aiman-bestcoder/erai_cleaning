@@ -61,7 +61,7 @@
 .nav-links {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;;
     height: 100%;
     opacity: 1;
     position: absolute;
@@ -84,6 +84,7 @@
     transition: transform 0.35s ease, color 0.35s ease;
     will-change: transform;
     transform: translate3d(0, 0, 0);
+    text-align: center;
 }
 
 .nav-links a:hover {
@@ -93,11 +94,11 @@
 @media (orientation: portrait) {
     .header {
         position: fixed;
+        width: 375px;
         top: 10px;
         left: 50%;
         transform: translateX(-50%);
-        width: 475px;
-        height: 60px;
+        height: 50px;
         border-radius: 30px;
         background: #8cd7ff73;
         backdrop-filter: blur(4px);
@@ -113,7 +114,13 @@
     }
 
     .header.collapsed {
-        width: 475px;
+        width: 375px;
+    }
+
+    .logo img {
+        width: 51px;
+        height: 51px;
+        margin-right: 10px;
     }
 
     .header.collapsed .nav-links {
@@ -121,8 +128,22 @@
         pointer-events: none;
     }
 
+    .nav-links {
+        top: 0;
+        left: 47px;
+        width: 85%;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+        font-weight: 600;
+        transition: transform 0.35s ease, color 0.35s ease;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+    }
+
     .header.collapsed:hover {
-        width: 475px;
+        width: 90%;
     }
 
     .header.collapsed:hover .nav-links {

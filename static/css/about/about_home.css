@@ -1,7 +1,6 @@
 .about-section {
   position: relative;
   width: 85%;
-  aspect-ratio: 21 / 9;
   margin: clamp(15px, 10vw, 45px) auto 0;
   border-radius: clamp(80px, 5vw, 115px);
   overflow: hidden;
@@ -137,29 +136,47 @@
 
 @media (orientation: portrait) {
   .about-section {
-    aspect-ratio: 1 / 1;
-    width: 80%;
-    max-width: 800px;
-    margin: auto;
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 50px;
+    display: flex;           /* делаем флекс контейнер */
+    flex-direction: column;  /* картинки сверху, текст снизу */
+    align-items: center;
+    justify-content: center; /* вертикальное центрирование */
+    padding: 20px;           /* отступы сверху/снизу */
+    box-sizing: border-box;
   }
 
-  /* Текст снизу, с одинаковыми отступами слева и справа */
+
   .about-text {
-    position: absolute;
-    left: 8%;
-    right: 8%;
-    bottom: 6%;
-    width: auto;
+    position: relative;
+    width: 100%;
     height: auto;
-    padding: 6%;
-    border-radius: inherit;
+    padding: 20px;
+    left: 0px;
+    bottom: 0px;
+    margin-top: 65px;       /* небольшой отступ от картинки */
+    border-radius: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* вертикально по центру */
+    align-items: center;     /* горизонтально по центру */
+    text-align: center;
     transform: none !important;
+  }
+
+  .about-image {
+    border-radius: 50px;
+  }
+
+  .about-image::before {
+    border-radius: 50px;
   }
 
   /* Заголовок по центру сверху, ширина по содержимому */
   .about-heading {
     position: absolute;
-    top: 6%;
+    top: 3%;
     left: 50%;
     padding: clamp(8px, 3vw, 14px) clamp(14px, 4vw, 22px);
     transform: translateX(-50%) !important;

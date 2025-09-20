@@ -265,44 +265,130 @@
   transform: none;
 }
 
-@media (orientation: portrait) {
+@media (max-width: 768px), (orientation: portrait) {
+  .footer {
+    padding: 30px 15px 20px;
+    border-radius: 40px 40px 0 0;
+  }
+
   .footer-container {
     flex-direction: column;
-    align-items: stretch; /* ссылки тянутся, а колонка с лого сама по контенту */
-  }
-
-  .footer-col:first-child {
-    order: 2;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px;
+    align-items: stretch;
     gap: 20px;
-    max-height: 180px;  /* убрали фикс 100px */
-    min-height: auto; /* под контент */
-    max-width: none; /* убрали ограничение */
   }
 
-  .footer-col:first-child .footer-left {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  .footer-col,
+  .links-box {
+    min-height: auto;
+    width: 80%;
+    padding: 15px;
     gap: 12px;
+    margin: 0 auto;
   }
 
+  /* Первая колонка с логотипом и кнопками */
+  .footer-col:first-child {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-height: none;
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .footer-col:first-child .footer-left,
   .footer-col:first-child .footer-right {
-    flex: 1;
-    display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 12px;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
   }
 
   .footer-col:first-child .footer-btn {
-    width: 100%;
-    max-width: 200px;
+    width: 90%;
+    max-width: 180px;
+    margin: 6px auto;
+  }
+
+  /* Секция ссылок */
+  .links-box {
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 30px;
+    min-height: auto;
+  }
+
+  .links-column {
+    width: 90%;
+    padding: 10px 0;
+    margin-top: 10px;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+  }
+
+  .links-column:not(:last-child)::after {
+    display: none; /* убираем вертикальные линии */
+  }
+
+  .links-column .footer-links a {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+
+  .footer-heading {
+    font-size: 1.2rem;
+  }
+
+  .footer-bottom {
+    margin-top: 25px;
+    font-size: 0.8rem;
+    padding-top: 15px;
+  }
+
+  .footer-icon-only {
+    width: 32px;
+    height: 32px;
+  }
+
+  .footer-logo-img {
+    max-width: 60px;
+  }
+}
+
+@media (max-width: 420px) {
+  .footer {
+    padding: 20px 10px 15px;
+    border-radius: 25px 25px 0 0;
+  }
+
+  .footer-btn {
+    width: 140px;
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  .footer-heading {
+    font-size: 1rem;
+  }
+
+  .footer-links a {
+    font-size: 0.85rem;
+    padding: 4px 8px;
+  }
+
+  .footer-icon-only {
+    width: 28px;
+    height: 28px;
+  }
+
+  .footer-logo-img {
+    max-width: 50px;
+  }
+
+  .links-column {
+    padding: 8px 0;
+    margin-top: 8px;
   }
 }

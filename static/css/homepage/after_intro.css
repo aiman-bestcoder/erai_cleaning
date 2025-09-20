@@ -109,6 +109,9 @@
 /* Вертикальная ориентация экрана */
 @media (orientation: portrait) {
   .after-intro-section {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 2 / 3;
+  }
+  .after-intro-glass {
+    width: 96%;
   }
 }

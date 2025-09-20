@@ -301,10 +301,16 @@
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@media (max-aspect-ratio: 1/1), (max-width: 900px) {
+@media (orientation: portrait) {
   /* делаем .feedback-section потоковым как у тебя было */
   .feedback-section {
     display: block;
+    width: 90%;
+    border-radius: 65px;
+  }
+
+  .feedback-section .feedback-left .feedback-glass {
+    border-radius: 55px 55px 15px 15px;
   }
 
   /* LEFT: стекло становится горизонтальным прямоугольником сверху */
@@ -318,16 +324,11 @@
 
   /* стеклянный блок — узкий по высоте, широкий по ширине, центрирован */
   .feedback-glass {
-    width: calc(100% - 40px);     /* одинаковые боковые отступы с формой (20px) */
+    width: 90%;     /* одинаковые боковые отступы с формой (20px) */
     max-width: 980px;
     margin: 0 auto;
     margin-top: 5px;
     padding: 14px 20px;           /* уменьшённый padding — делает блок "горизонтальным" */
-    border-radius: 75px;  
-    border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px;
-    border-top-left-radius: 75px;
-    border-top-right-radius: 75px;
     box-sizing: border-box;
     align-self: flex-start;       /* располагается вверху левой области */
   }
@@ -335,7 +336,7 @@
   /* чуть меньше текста/паддингов внутри info-box */
   .feedback-info-box {
     padding: 10px 12px;
-    border-radius: 25px;
+    border-radius: 10px;
   }
 
   /* RIGHT: запас снизу и одинаковые боковые отступы с .feedback-glass */
@@ -399,10 +400,10 @@
 
   /* на самых узких — подгоняем размеры */
   @media (max-width: 420px) {
-    .feedback-glass { padding: 10px 14px; border-radius: 10px; }
+    .feedback-glass { padding: 10px 14px; border-radius: 35px; }
     .feedback-form { padding: 0 14px; }
     .feedback-form-group input,
-    .feedback-form-group textarea { padding: 8px 10px; border-radius: 10px; }
+    .feedback-form-group textarea { padding: 8px 10px; border-radius: 35px; }
     .feedback-submit-btn { width: 140px; }
   }
 }

@@ -273,8 +273,8 @@
   .catalog-section {
     width: 100%;
     min-width: unset;
-    height: 60vh;            /* фиксируем высоту под скролл */
     border-radius: 70px;
+    aspect-ratio: 1/1;
   }
 
   .catalog-content {

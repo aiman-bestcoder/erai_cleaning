@@ -155,15 +155,15 @@
 /* Вертикальные экраны */
 @media (orientation: portrait) {
   .cleaning-area-wrapper {
-    border-radius: 80px;
+    border-radius: 70px;
   }
 
   .cleaning-area-wrapper::after {
-    border-radius: 80px;
+    border-radius: 70px;
   }
 
   .cleaning-bg-wrapper {
-    border-radius: 80px;
+    border-radius: 70px;
   }
 
   .locations-container {
@@ -180,7 +180,8 @@
   }
 
   .location-link {
-    font-size: 1.2em;
+    font-size: 14px;
+    white-space: normal;
   }
 
   /* убираем линии между словами */
@@ -191,15 +192,9 @@
   .map-container {
     order: 2; /* карта уходит вниз */
     width: 100%;
-    height: clamp(250px, 40vh, 500px);
+    height: 100%;
     margin: clamp(15px, 5vh, 40px) 0 0;
     border-radius: 60px;
     margin-bottom: -10px;
-  }
-}
-
-@media (max-width: 480px) and (orientation: portrait) {
-  .locations-grid {
-    grid-template-columns: 1fr;
   }
 }

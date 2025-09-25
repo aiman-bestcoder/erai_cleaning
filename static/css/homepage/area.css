@@ -154,6 +154,10 @@
 
 /* Вертикальные экраны */
 @media (orientation: portrait) {
+  cleaning-area {
+    gap: 15px; /* уменьшаем разрыв между сеткой и картой */
+  }
+
   .cleaning-area-wrapper {
     border-radius: 70px;
   }
@@ -169,6 +173,7 @@
   .locations-container {
     flex-direction: column;
     align-items: center;
+    margin-bottom: 0px;
   }
 
   .locations-grid {
@@ -177,6 +182,7 @@
     width: 100%;
     margin-left: 0;
     border-radius: 60px;
+    padding: 15px;
   }
 
   .location-link {
@@ -190,11 +196,13 @@
   }
 
   .map-container {
-    order: 2; /* карта уходит вниз */
+    order: 2;
     width: 100%;
     height: 100%;
     margin: clamp(15px, 5vh, 40px) 0 0;
+    margin-top: 15px;
     border-radius: 60px;
     margin-bottom: -10px;
+    aspect-ratio: 1/1;
   }
 }

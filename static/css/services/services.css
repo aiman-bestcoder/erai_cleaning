@@ -156,35 +156,75 @@
   color: #8e46a4;
 }
 
-@media (max-width: 480px) {
+@media (orientation: portrait) {
   .services-section {
-    width: 90vw;
-    aspect-ratio: 1 / 1;
+    width: 90%;
     margin: 20px auto 60px;
-    padding: clamp(10px, 3vw, 30px);
+    padding: 0;
+    border-radius: 70px;
+    aspect-ratio: 1 / 1; /* квадрат */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .services-title {
-    margin: 0 auto clamp(15px, 3vw, 25px);
+    margin: 5px;
     text-align: center;
-    max-width: 80%;
-    padding: clamp(15px, 3vw, 25px) clamp(20px, 5vw, 40px);
-    margin-left: 30px;
+    max-width: 100%;
+    padding: 10px 20px;
   }
 
   .services-scroll-wrapper {
-    padding: 0; 
-    scroll-padding-inline: clamp(10px, 5vw, 20px);
-    width: 100%;
+    padding-inline: clamp(30px, 3vw, 60px);           /* отступы слева/справа */
+    scroll-padding-inline: clamp(30px, 3vw, 60px);    /* для scroll-snap */
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .services-row {
-    gap: clamp(15px, 3vw, 25px);
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: clamp(60px, 9vw, 100px);
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .services-row::after {
+    content: "";
+    flex: 0 0 clamp(30px, 3vw, 60px); /* ширина буфера = отступ контейнера */
+    height: 1px;
   }
 
   .service-card {
-    width: calc(50% - clamp(7.5px, 1.5vw, 12.5px)); /* две карточки в ряд с учетом gap */
-    aspect-ratio: 1 / 1.6; /* можно чуть удлинить карточку, чтобы она не была квадратной */
+    flex: 0 0 auto;
+    aspect-ratio: 1 / 1; /* карточка квадрат */
+    width: clamp(290px, 90%, 380px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start; /* карточки «прилипают» к левому краю */
   }
-}
 
+  .service-card:last-child {
+    margin-inline-end: clamp(30px, 3vw, 60px); /* если что-то всё ещё обрезает правую часть */
+    scroll-snap-align: end; /* если хочешь, чтобы последняя карточка «прилипала» к правому отступу */
+  }
+
+  .service-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 50%; /* всегда половина карточки */
+    width: 97%;
+    border-radius: 15px 15px 50px 50px;
+    padding: 15px;
+  }
+  
+}

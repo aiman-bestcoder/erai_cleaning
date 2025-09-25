@@ -213,5 +213,6 @@ html, body {
   .overlay {
     width: 80%;
     padding: 30px;
+    min-width: none;
   }
 }

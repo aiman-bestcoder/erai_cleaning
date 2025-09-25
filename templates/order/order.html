@@ -170,13 +170,14 @@
 </div>
 <section id="estimate" class="offline-estimate-section">
   <img class="offline-estimate-bg" src="{% static 'static_media/estimate.webp' %}">
-  <div href="sms:+17035964659?body=Hey, I need an estimation" class="offline-estimate-content">
+  <a href="sms:+17035964659?body=Hey, I need an estimation" class="offline-estimate-content">
     <h2>Too Long to Calculate?</h2>
     <p>
       You can just request our <strong>Free offline estimate</strong> — just tap, we’ll get back to you promptly!
     </p>
-  </div>
+  </a>
 </section>
+
 
 <script>
   const orderCreateUrl = "{% url 'order:order_create' %}";

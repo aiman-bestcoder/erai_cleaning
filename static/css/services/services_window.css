@@ -163,6 +163,7 @@
   border-radius: 45px;
   padding: clamp(6px, 2vw, 10px) clamp(14px, 3vw, 22px);
   color: #5d568b;
+  text-shadow: #cbf0ff00 0 1px 3px;
   font-weight: 700;
   font-size: clamp(1rem, 3vw, 1.3rem);
   position: absolute;
@@ -176,12 +177,18 @@
 @keyframes pulse {
   0% {
     transform: scale(1);
+    color: #5d568b;
+    text-shadow: #cbf0ff00 0 1px 3px;
   }
   50% {
     transform: scale(1.05);
+    color: #e2e9ff;
+    text-shadow: #0005a3 0 1px 3px;
   }
   100% {
     transform: scale(1);
+    color: #5d568b;
+    text-shadow: #cbf0ff00 0 1px 3px;
   }
 }
 
@@ -267,34 +274,69 @@
     padding: var(--pad);
     border-radius: 90px;
     gap: var(--gap);
-    height: 1400px;
+    height: auto;
+    height: auto;
   }
 
   .catalog-section {
     width: 100%;
     min-width: unset;
     border-radius: 70px;
-    aspect-ratio: 1/1;
+    aspect-ratio: 3/4; /* новое соотношение */
+    height: auto;
   }
 
   .catalog-content {
-    height: 100%;            /* сохраняем scroll-snap */
+    height: 100%;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
   }
 
   .side-column {
     width: 100%;
-    height: auto;            /* теперь просто по контенту */
+    height: auto;
     flex: unset;
     border-radius: var(--radius-sm);
   }
 
   .service-block {
-    min-height: 100%;        /* чтобы снэп работал */
+    min-height: 100%;
   }
+
+  /* Заголовок по центру */
+  .service-title {
+    position: relative;
+    top: unset;
+    left: unset;
+    margin: 0 auto 15px auto;
+    text-align: center;
+    display: inline-block;
+  }
+
+  /* Блок описания квадратный */
+  .service-description {
+    width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 1/1;           /* квадратное соотношение */
+    padding: 20px 10px;          /* по бокам 10px */
+    overflow-y: auto;    
+    border-radius: 30px;        /* прокрутка, если текст длинный */
+  }
+
+  /* Цена полосой на всю ширину */
   .service-price {
-    font-size: 0.8rem;
+    position: relative;
+    bottom: unset;
+    right: unset;
+    width: calc(100% - 20px);
+    margin: 20px auto 0 auto;
+    text-align: center;
+    font-size: 1rem;
+    display: block;
   }
-  
+
+  /* Убираем CTA */
+  .service-cta {
+    display: none !important;
+  }
 }

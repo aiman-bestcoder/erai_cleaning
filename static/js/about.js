@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Карусель ---
+
   const track   = document.querySelector(".intro-carousel-track");
   const slides  = Array.from(document.querySelectorAll(".intro-carousel-slide:not(.intro-ghost-slide)"));
   const prevBtn = document.querySelector(".intro-carousel-nav.prev");
@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Параллакс для слогана ---
   const sloganSection = document.querySelector(".slogan-section");
   const sloganBg = document.querySelector(".slogan-section .slogan-bg");
 

@@ -1,0 +1,132 @@
+.header {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 475px;
+    height: 60px;
+    border-radius: 30px;
+    background: #8cd7ff73;
+    backdrop-filter: blur(4px);
+    transition: all 0.4s ease;
+    z-index: 1000;
+    box-shadow: 0 0 4px #00000029;
+    border: 1px solid rgba(225, 242, 255, 0.4);
+    opacity: 0;
+    animation: headerfadeIn 0.5s forwards 1s;
+}
+
+.header * {
+    pointer-events: auto; /* а детям — разрешаем клики */
+}
+
+.header.collapsed {
+    width: 60px;
+}
+
+.header.collapsed .nav-links {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.header.collapsed:hover {
+    width: 475px;
+}
+
+.header.collapsed:hover .nav-links {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+@keyframes headerfadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 60px;
+    transition: all 0.3s ease;
+}
+
+.logo img {
+    width: 56px;
+    height: 56px;
+    margin-right: 2px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 75px;
+    width: 350px;
+    transition: opacity 0.3s ease, left 0.3s ease;
+}
+
+.header.collapsed .nav-links {
+    opacity: 0;
+}
+
+.nav-links a {
+    color: #013f6cc7;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    font-weight: 600;
+    transition: transform 0.35s ease, color 0.35s ease;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+}
+
+.nav-links a:hover {
+    transform: scale(1.15);
+}
+
+@media (orientation: portrait) {
+    .header {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 475px;
+        height: 60px;
+        border-radius: 30px;
+        background: #8cd7ff73;
+        backdrop-filter: blur(4px);
+        transition: all 0.4s ease;
+        z-index: 1000;
+        box-shadow: 0 0 4px #00000029;
+        border: 1px solid rgba(225, 242, 255, 0.4);
+        opacity: 0;
+        animation: headerfadeIn 0.5s forwards 1s;
+    }
+    .header * {
+        pointer-events: auto; /* а детям — разрешаем клики */
+    }
+
+    .header.collapsed {
+        width: 475px;
+    }
+
+    .header.collapsed .nav-links {
+        opacity: 1;
+        pointer-events: none;
+    }
+
+    .header.collapsed:hover {
+        width: 475px;
+    }
+
+    .header.collapsed:hover .nav-links {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}

@@ -1,0 +1,196 @@
+.gallery-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-carousel {
+  position: relative;
+  min-height: 30vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #b2e4ff53, #aee3ffa4, #b2e4ff53);
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  box-shadow: inset 0 0 5px #00000058;
+}
+
+.gallery-carousel::before,
+.gallery-carousel::after {
+  content: "";
+  position: absolute;
+  left: 0; /* линии будут короче ширины контейнера */
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #0f004480, transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.gallery-carousel::before {
+  top: 0; /* верхняя линия */
+}
+
+.gallery-carousel::after {
+  bottom: 0; /* нижняя линия */
+}
+
+
+.gallery-carousel .background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(20px) brightness(0.7);
+  z-index: -1;
+  transition: transform 0.4s ease;
+}
+
+.gallery-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3.8em;
+  font-weight: 600;
+  margin-top: -4%;
+  color: #00385fce;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 10px;
+  padding-left: 5vw;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  align-items: center;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  z-index: 2;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-slide {
+  flex: 0 0 30vw;
+  scroll-snap-align: center;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 45px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.5);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease;
+}
+
+.carousel-slide .caption {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(6px);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  color: #fff;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  will-change: tranform, opacity;
+}
+
+.carousel-slide.active img {
+  transform: scale(0.85);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.carousel-slide:not(.active) img {
+  transform: scale(0.6);
+  opacity: 0.25;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  background: rgba(112, 217, 255, 0.2);
+  box-shadow: inset 0 1px 3px #ffffff;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  z-index: 3;
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
+}
+
+.carousel-slide.active::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.carousel-nav:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.4);
+}
+
+.carousel-nav:active {
+  transform: scale(0.85);
+}
+
+.carousel-nav.prev { left: 20px; }
+.carousel-nav.next { right: 20px; }
+
+.ghost-slide {
+  flex: 0 0 30vw; /* такой же размер, как у обычного слайда */
+  height: 100%;
+  pointer-events: none; /* нельзя кликать */
+  opacity: 0; /* невидим */
+}
+
+
+@media (orientation: portrait) {
+  .gallery-carousel {
+    min-height: 55vh; /* ещё больше для телефонов */
+  }
+
+  .carousel-slide {
+    flex: 0 0 80vw;
+  }
+
+  .gallery-title {
+    font-size: calc(5em * (100vw / 1600));
+  }
+}

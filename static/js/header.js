@@ -9,6 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    handleScroll(); // Проверка при загрузке
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
 });

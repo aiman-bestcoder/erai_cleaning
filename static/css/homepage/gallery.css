@@ -23,7 +23,7 @@
 .gallery-carousel::after {
   content: "";
   position: absolute;
-  left: 0; /* линии будут короче ширины контейнера */
+  left: 0;
   width: 100%;
   height: 1px;
   background: linear-gradient(to right, transparent, #0f004480, transparent);
@@ -32,11 +32,11 @@
 }
 
 .gallery-carousel::before {
-  top: 0; /* верхняя линия */
+  top: 0;
 }
 
 .gallery-carousel::after {
-  bottom: 0; /* нижняя линия */
+  bottom: 0;
 }
 
 
@@ -174,16 +174,16 @@
 .carousel-nav.next { right: 20px; }
 
 .ghost-slide {
-  flex: 0 0 30vw; /* такой же размер, как у обычного слайда */
+  flex: 0 0 30vw;
   height: 100%;
-  pointer-events: none; /* нельзя кликать */
-  opacity: 0; /* невидим */
+  pointer-events: none;
+  opacity: 0;
 }
 
 
 @media (orientation: portrait) {
   .gallery-carousel {
-    min-height: 55vh; /* ещё больше для телефонов */
+    min-height: 55vh;
   }
 
   .carousel-slide {

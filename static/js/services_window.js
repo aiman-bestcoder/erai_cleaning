@@ -1,13 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // находим все иконки инфо
   const infoIcons = document.querySelectorAll(".service-info-icon");
 
   infoIcons.forEach(icon => {
     icon.addEventListener("click", () => {
-      // переключаем класс "expanded"
       icon.classList.toggle("expanded");
 
-      // ищем вложенный блок с текстом
       const infoText = icon.querySelector(".service-info-text");
       if (infoText) {
         if (icon.classList.contains("expanded")) {
@@ -27,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // если используем service-included — можно плавно открывать/закрывать
   const toggles = document.querySelectorAll(".service-toggle");
   toggles.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -46,12 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // мобильный/тач фоллбек: тап по чипу — переключает отображение тултипа
+
   document.querySelectorAll('.extra-chip').forEach(chip => {
     chip.addEventListener('click', (e) => {
-      // предотвращаем закрытие/открытие при клике по внутренним элементам
+
       e.stopPropagation();
-      // закрываем другие
+
       document.querySelectorAll('.extra-chip.extra-open').forEach(c => {
         if (c !== chip) c.classList.remove('extra-open');
       });
@@ -59,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // тап вне — закрыть все тултипы
   document.addEventListener('click', () => {
     document.querySelectorAll('.extra-chip.extra-open').forEach(c => c.classList.remove('extra-open'));
   });

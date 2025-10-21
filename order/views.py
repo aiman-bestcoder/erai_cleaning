@@ -42,10 +42,9 @@ def calculate_price(data):
 
     price_with_service = base_price * Ts
 
-    # ✅ Получаем extras по ManyToMany
     extras_total = 0
     extras = []
-    extra_ids = data.getlist("extras")  # many=True
+    extra_ids = data.getlist("extras")
     for eid in extra_ids:
         try:
             extra = Extra.objects.get(pk=eid)
@@ -54,7 +53,6 @@ def calculate_price(data):
         except Extra.DoesNotExist:
             continue
 
-    # ✅ Дополнительная цена за ковёр
     carpet_price = 0
     carpet_area = 0
     if data.get("carpet"):
@@ -73,7 +71,6 @@ def calculate_price(data):
 
     subtotal = price_with_service + extras_total
 
-    # ✅ Применяем коэффициент частоты
     V_key = data.get("frequency")
     V = FREQUENCY_MULTIPLIERS.get(V_key, 1)
 
@@ -82,7 +79,6 @@ def calculate_price(data):
     discount_amount = round(subtotal - total_price, 2) if V < 1 else 0
     discount_percent = int(round((1 - V) * 100)) if V < 1 else 0
 
-    # ✅ Подготовим breakdown
     breakdown = [
         {"label": f"Area ({S} sqft)", "price": round(S * Tr, 2)},
         {"label": f"{Nr} Room(s)", "price": 26 * Nr},

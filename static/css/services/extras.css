@@ -11,7 +11,6 @@
   border: 1px solid rgba(225,242,255,0.18);
 }
 
-/* ряд маленьких кружков выровнен по центру */
 .extras-rail {
   display: flex;
   justify-content: center;
@@ -19,12 +18,11 @@
   padding: 6px;
 }
 
-/* круги чуть компактнее */
 .extra-chip {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  overflow: visible; /* тултип не обрезается */
+  overflow: visible;
   position: relative;
   cursor: pointer;
 }
@@ -36,7 +34,6 @@
   border-radius: 50%;
 }
 
-/* тултип — оставляем красивую анимацию (немного подрезанное время) */
 .extra-flyout {
   position: absolute;
   bottom: 110%;
@@ -64,55 +61,46 @@
   box-shadow: 0 10px 28px rgba(0,0,0,0.22), 0 0 10px rgba(173,216,255,0.6);
 }
 
-/* тултип: имя + цена */
 .extra-flyout-name { font-weight: 600; font-size: .95rem; margin-bottom: 4px; }
 .extra-flyout-price { font-size: .85rem; color: #32758f; font-weight: 500; }
 
 @media (orientation: portrait) {
   :root {
     --extras-buffer: clamp(18px, 4vw, 36px);
-    --extra-chip-size: 110px; /* можно подправить: 100 / 110 / 130 */
+    --extra-chip-size: 110px;
     --extra-chip-gap: 14px;
     --extra-chip-vertical-margin: 10px;
   }
 
-  /* контейнер: единые внешние отступы + горизонтальный скролл */
   .extras-section {
     margin: 30px 16px 0;
-    padding: 12px 0;                   /* внутренний вертикальный padding */
+    padding: 12px 0;
     border-radius: 50px;
     background: linear-gradient(45deg, #ecf6ff, #e3f3ff);
     box-shadow: inset 0 0 3px #00000010;
     border: 1px solid rgba(225,242,255,0.18);
-
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
     white-space: nowrap;
     scrollbar-width: none;
     box-sizing: border-box;
-
-    /* Убираем horizontal padding — буфер будет внутри рельса */
     padding-inline: 0;
-    /* Но оставляем scroll-padding для корректного поведения при snap */
     scroll-padding-left: var(--extras-buffer);
     scroll-padding-right: var(--extras-buffer);
   }
 
   .extras-section::-webkit-scrollbar { display: none; }
 
-  /* рельс: ширина по контенту, horizontal flow */
   .extras-rail {
     display: inline-flex;
     gap: var(--extra-chip-gap);
-    padding: 6px 0;              /* вертикальные отступы рельса */
-    width: max-content;          /* важное для корректной горизонтальной прокрутки */
+    padding: 6px 0;
+    width: max-content;
     align-items: center;
     box-sizing: border-box;
-
-    /* добавляем буфер слева/справа через псевдоэлементы:
-       это гарантирует, что первая карточка начнётся полностью */
   }
+
   .extras-rail::before,
   .extras-rail::after {
     content: "";
@@ -120,17 +108,16 @@
     height: 1px;
   }
 
-  /* карточки: уменьшены, вертикальные отступы, snap start */
   .extra-chip {
     flex: 0 0 var(--extra-chip-size);
     width: var(--extra-chip-size);
     height: var(--extra-chip-size);
     border-radius: 14px;
-    scroll-snap-align: start;   /* важный момент: приставание к началу (левому краю) */
+    scroll-snap-align: start;
     transition: transform 0.24s ease, box-shadow 0.24s ease;
     position: relative;
     overflow: visible;
-    margin: var(--extra-chip-vertical-margin) 0; /* вертикальные отступы */
+    margin: var(--extra-chip-vertical-margin) 0;
   }
 
   .extra-chip img {
@@ -143,7 +130,6 @@
     border: white 1px solid;
   }
 
-  /* стеклянная плашка внутри карточки — чуть компактнее */
   .extra-info {
     position: absolute;
     bottom: 8px;
@@ -181,7 +167,6 @@
     max-width: 50%;
   }
 
-  /* ховер/тап эффект — аккуратно поднимаем */
   .extra-chip:active,
   .extra-chip:focus {
     transform: translateY(-4px);

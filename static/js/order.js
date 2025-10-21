@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          alert(data.message); // можно заменить на SweetAlert2 или Toastr
+          alert(data.message);
           form.reset();
         } else {
           alert("Please correct the errors in the form.");

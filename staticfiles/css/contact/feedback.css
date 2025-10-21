@@ -1,0 +1,408 @@
+.feedback-section {
+  /* сохраняем твои значения, но переключаемся на grid для гарантированного контроля правой колонки */
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 50%); /* Левый блок гибкий, правый — минимум 320px, максимум 50% */
+  width: clamp(400px, 80%, 1400px);
+  border-radius: 95px;
+  overflow: hidden;
+  margin: clamp(20px, 3vw, 50px) auto 0;
+  background-color: #fbf8ff;
+  border: 1px solid rgba(255, 255, 255, 0.669);
+  transition: all 0.3s ease;
+  /* высота как раньше (можно корректировать при необходимости) */
+  height: calc(clamp(300px, 80%, 1400px) / (21/9));
+  box-sizing: border-box;
+}
+
+/* гарантируем, что дети grid-а не будут выходить за свои ячейки */
+.feedback-section > * {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* левый блок — без изменений визуально */
+.feedback-left {
+  flex: 1; /* оставляем на случай, если где-то используется JS, но главное — grid-контейнер управляет размером */
+  background-image: url('/static/static_media/contact-section.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* декоративный слой — без изменения */
+.feedback-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.274);
+  z-index: 1;
+  pointer-events: none;
+  border-bottom-left-radius: clamp(40px, 6vw, 95px);
+  border-top-left-radius: clamp(40px, 6vw, 95px);
+}
+
+.feedback-left > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Формы и внутренняя логика (важные правки: min-width:0, flex-база 0) ---------- */
+
+/* оставляем твои правила для колонок, но гарантируем min-width:0 и возможность сжатия */
+.feedback-form-left,
+.feedback-form-right {
+  flex: 1 1 clamp(250px, 45%, 50%);
+  min-width: 0;        /* КЛЮЧЕВОЕ: позволяет колонке сжиматься внутри flex контейнера */
+  box-sizing: border-box;
+}
+
+/* стекло и текст слева — оставлено без изменений */
+.feedback-glass {
+  background: #f6faff7f;
+  backdrop-filter: blur(15px);
+  border-radius: clamp(20px, 3vw, 45px);
+  padding: clamp(20px, 2.5vw, 40px);
+  max-width: clamp(250px, 35vw, 500px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+.feedback-glass h1 {
+  position: relative;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  color: #00528c;
+  margin-bottom: clamp(10px, 1.5vw, 20px);
+  padding-bottom: clamp(8px, 1vw, 15px);
+}
+
+.feedback-glass h1::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  bottom: 0;
+  width: 90%;
+  height: clamp(1px, 0.15vw, 2px);
+  background: #ffffff64;
+  pointer-events: none;
+}
+
+.feedback-info-box {
+  background: rgba(255, 255, 255, 0.608);
+  border-radius: clamp(12px, 2vw, 25px);
+  padding: clamp(10px, 1.5vw, 20px);
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  color: #013f6c;
+  margin-top: clamp(10px, 1.5vw, 20px);
+}
+
+/* правая ячейка grid — центрируем форму внутри */
+.feedback-right {
+  background: #b2e4ff53;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 3vw, 40px);
+  box-sizing: border-box;
+  min-width: 0; /* важно */
+}
+
+/* форма: всегда внутри правой ячейки, ширина 100% правой ячейки, но поля не выйдут за края */
+.feedback-form {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0; /* если хочешь — можно добавить внутренние отступы, но я оставил твой стиль */
+}
+
+/* ряд внутри формы остаётся flex — но дочерние колонки корректно сжимаются */
+.feedback-form-row {
+  display: flex;
+  gap: clamp(10px, 1.5vw, 20px);
+  box-sizing: border-box;
+}
+
+/* колонки внутри формы: flex-basis 0 — ключ к равномерному распределению и сжатию */
+.feedback-form-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 3vw, 40px);
+  margin-top: 70px;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.feedback-form-left,
+.feedback-form-right {
+  flex: 1 1 0;   /* flex-basis 0 — гарантирует, что колонка будет сжиматься ровно до доступного места */
+  min-width: 0;  /* ещё раз — важно */
+  box-sizing: border-box;
+}
+
+/* отступы и поведение групп полей — сохранил твои значения, но добавил защиту от переполнения */
+.feedback-form-group {
+  margin-bottom: 35px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* ПОЛЕЗНОЕ правило: поля не могут быть шире родителя и учитывают бордер/паддинг */
+.feedback-form-group input,
+.feedback-form-group textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: block;
+}
+
+/* сохраняем визуал */
+.feedback-form-group input {
+  padding: clamp(10px, 1.5vw, 20px);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  border: none;
+  border-radius: 30px;
+  background: #ffffff69;
+  box-shadow: 0 0 3px #00000018,
+              inset 0 0 6px #00000009;
+  border: 1px solid rgba(255, 255, 255, 0.641);
+  color: #32758f;
+  transition: all 0.3s ease-in-out;
+}
+
+.feedback-form-group textarea {
+  padding: clamp(10px, 1.5vw, 20px);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  border: none;
+  border-radius: 45px;
+  background: #ffffff69;
+  box-shadow: 0 0 3px #00000018,
+              inset 0 0 6px #00000009;
+  border: 1px solid rgba(255, 255, 255, 0.641);
+  color: #32758f;
+  transition: all 0.3s ease-in-out;
+  height: clamp(100px, 15vw, 150px);
+  resize: none;
+}
+
+/* фокус/плейсхолдер/лейбл — всё как у тебя */
+.feedback-form-group input:focus,
+.feedback-form-group textarea:focus {
+  outline: none;
+  box-shadow: 0 0 7px #6799ff5c,
+              inset 0 0 6px #00000011;
+}
+
+.feedback-form-group input::placeholder,
+.feedback-form-group textarea::placeholder {
+  color: transparent;
+}
+
+.feedback-form-group input:focus::placeholder,
+.feedback-form-group textarea:focus::placeholder {
+  color: transparent;
+}
+
+.feedback-form-group label {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  font-size: 1rem;
+  color: #32758f;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: 0.3s ease;
+  background: rgba(255, 255, 255, 0);
+  padding: 0 6px;
+  border-radius: 8px;
+}
+
+.feedback-form-group input:focus + label,
+.feedback-form-group textarea:focus + label,
+.feedback-form-group input:not(:placeholder-shown) + label,
+.feedback-form-group textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 30px;
+  font-size: 0.75rem;
+  color: #01406c;
+  background: rgba(215, 231, 255, 0.63);
+  box-shadow: 0 0 6px rgba(215, 231, 255, 0.63);
+}
+
+.feedback-form-group input:hover,
+.feedback-form-group textarea:hover {
+  box-shadow: 0 0 7px #6799ff5c,
+              inset 0 0 6px rgba(0, 0, 0, 0.094);
+}
+
+/* кнопка — без изменений (сохранил все твои правила) */
+.feedback-submit-btn {
+  padding: clamp(10px, 1.5vw, 15px);
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  transition: all 0.4s ease-in-out;
+  background: transparent;
+  color: #18aeff;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  width: clamp(200px, 60%, 300px);
+  margin: clamp(20px, 2vw, 20px) auto 0;
+  border: 1px solid rgba(255, 255, 255, 0.641);
+  border-radius: 55px;
+  box-shadow: 0 0 6px #00000018, inset -1px 1px 6px rgba(218, 235, 255, 0.499);
+  max-width: 300px;
+  display: block;
+  will-change: transform, box-shadow, opacity;
+}
+
+.feedback-submit-btn:hover {
+  background: transparent;
+  color: #000000;
+  transform: scale(1.1) translateY(-3px);
+}
+
+.feedback-submit-btn:before {
+  content: '';
+  background: linear-gradient(45deg, #82a7bb, #c2e8fc, #76c5ef, #c2e8fc, #4fc1ff, #7fbada);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  will-change: background-position, opacity;
+  filter: blur(2px);
+  box-shadow: 0 0 3px #00000029, inset -1px 1px 6px rgba(255, 255, 255, 0.499);
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  animation: glowing 27s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in;
+  border-radius: 25px;
+}
+
+.feedback-submit-btn:hover:before {
+  opacity: 1;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+.feedback-submit-btn:active {
+  transform: scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (max-aspect-ratio: 1/1), (max-width: 900px) {
+  /* делаем .feedback-section потоковым как у тебя было */
+  .feedback-section {
+    display: block;
+  }
+
+  /* LEFT: стекло становится горизонтальным прямоугольником сверху */
+  .feedback-left {
+    display: flex;
+    align-items: flex-start;      /* стекло сверху */
+    justify-content: center;
+    padding: 12px 0 8px;          /* сверху чуть воздуха */
+    box-sizing: border-box;
+  }
+
+  /* стеклянный блок — узкий по высоте, широкий по ширине, центрирован */
+  .feedback-glass {
+    width: calc(100% - 40px);     /* одинаковые боковые отступы с формой (20px) */
+    max-width: 980px;
+    margin: 0 auto;
+    margin-top: 5px;
+    padding: 14px 20px;           /* уменьшённый padding — делает блок "горизонтальным" */
+    border-radius: 75px;  
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    border-top-left-radius: 75px;
+    border-top-right-radius: 75px;
+    box-sizing: border-box;
+    align-self: flex-start;       /* располагается вверху левой области */
+  }
+
+  /* чуть меньше текста/паддингов внутри info-box */
+  .feedback-info-box {
+    padding: 10px 12px;
+    border-radius: 25px;
+  }
+
+  /* RIGHT: запас снизу и одинаковые боковые отступы с .feedback-glass */
+  .feedback-right {
+    padding: 14px 20px 26px; /* чтобы кнопка точно была видна */
+    box-sizing: border-box;
+  }
+
+  /* ФОРМА: делаем боковые отступы одинаковыми с .feedback-glass, чтобы края совпадали */
+  .feedback-form {
+    max-width: 100%;
+    padding: 0 20px;            /* ключ: те же 20px, что и у .feedback-glass */
+    box-sizing: border-box;
+  }
+
+  /* колонки внутри формы — становятся вертикальными, но при этом занимают ту же внутреннюю ширину */
+  .feedback-form-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 0px;
+  }
+
+  /* колонки занимают всю доступную внутреннюю ширину */
+  .feedback-form-left,
+  .feedback-form-right {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* группы полей — выравниваем отступы, чтобы поля имели одинаковый левый край */
+  .feedback-form-group {
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* инпуты/textarea — всегда по ширине родителя и с учётом box-sizing */
+  .feedback-form-group input,
+  .feedback-form-group textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    display: block;
+  }
+
+  /* Если у тебя были ряды с двумя полями (name/phone), на узких экранах пусть они тоже станут в колонку */
+  .feedback-form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* кнопка — гарантируем видимость, немного уменьшаем ширину и добавляем z-index */
+  .feedback-submit-btn {
+    width: clamp(160px, 60%, 260px);
+    margin: 12px auto 0;
+    z-index: 5;
+    position: relative;
+  }
+
+  /* на самых узких — подгоняем размеры */
+  @media (max-width: 420px) {
+    .feedback-glass { padding: 10px 14px; border-radius: 10px; }
+    .feedback-form { padding: 0 14px; }
+    .feedback-form-group input,
+    .feedback-form-group textarea { padding: 8px 10px; border-radius: 10px; }
+    .feedback-submit-btn { width: 140px; }
+  }
+}

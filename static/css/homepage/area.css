@@ -2,7 +2,7 @@
   position: relative;
   margin: clamp(2em, 6vw, 6em) auto;
   width: clamp(70%, 85%, 90%);
-  aspect-ratio: 16 / 9; /* фиксируем пропорции секции */
+  aspect-ratio: 16 / 9;
   border-radius: clamp(40px, 10vw, 105px);
   border: 1px solid rgba(255, 255, 255, 0.479);
   margin-top: clamp(60px, 12vh, 150px);
@@ -30,7 +30,6 @@
   pointer-events: none;
 }
 
-/* БЛЮР-ФОНОВАЯ КАРТИНКА */
 .cleaning-area-bg {
   position: absolute;
   inset: 0;
@@ -52,7 +51,6 @@
   padding: clamp(20px, 5vw, 50px) clamp(10px, 3vw, 20px);
 }
 
-/* Анимация появления */
 .cleaning-area.visible {
   opacity: 1;
   transform: translateY(0);
@@ -74,7 +72,7 @@
 
 .locations-container {
   display: flex;
-  flex: 1; /* занимает всё пространство */
+  flex: 1;
   gap: 20px;
   width: 100%;
 }
@@ -108,7 +106,6 @@
   text-align: center;
 }
 
-/* статичная вертикальная линия */
 .location-link:not(:nth-child(3n))::after {
   content: "";
   position: absolute;
@@ -121,7 +118,7 @@
 }
 
 .map-container {
-  flex: 1; /* высота карты = высота блока со словами */
+  flex: 1;
   overflow: hidden;
   border-radius: clamp(20px, 5vw, 60px);
 }
@@ -152,10 +149,9 @@
   }
 }
 
-/* Вертикальные экраны */
 @media (orientation: portrait) {
   cleaning-area {
-    gap: 15px; /* уменьшаем разрыв между сеткой и картой */
+    gap: 15px;
   }
 
   .cleaning-area-wrapper {
@@ -190,7 +186,6 @@
     white-space: normal;
   }
 
-  /* убираем линии между словами */
   .location-link::after {
     display: none !important;
   }

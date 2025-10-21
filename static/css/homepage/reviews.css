@@ -2,7 +2,7 @@
   text-align: center;
   width: 100%;
   position: relative;
-  overflow: hidden; /* чтобы заголовок не обрезался */
+  overflow: hidden;
   padding-top: 80px;
   min-height: 400px;
   z-index: 0;
@@ -45,12 +45,12 @@
 
 .reviews-background-cropper {
   position: absolute;
-  top: 80px; /* совпадает с верхом контейнера */
+  top: 80px;
   left: 0;
   width: 100%;
-  height: 400px; /* высота видимой области */
-  overflow: hidden; /* обрезаем всё, что выходит за рамки */
-  z-index: 0; /* ниже карточек */
+  height: 400px;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .reviews-background {
@@ -61,7 +61,7 @@
   height: 600px;
   background: url('/static/static_media/reviews.jpg') center/cover no-repeat fixed;
   will-change: transform;
-  transform: translateZ(0); /* аппаратное ускорение */
+  transform: translateZ(0);
   pointer-events: none;
 }
 
@@ -119,7 +119,6 @@
   flex-direction: column;
   justify-content: center;
   padding: 30px;
-
   background: #8cd7ff73;
   backdrop-filter: blur(10px) saturate(1.3);
   -webkit-backdrop-filter: blur(10px) saturate(1.3);
@@ -145,10 +144,9 @@
 
 .review-card:active {
   transform: translateY(-4px) scale(0.98);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Пружинистый эффект */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Хедер с фото и именем */
 .review-header {
   display: flex;
   align-items: center;
@@ -167,7 +165,6 @@
   background: #d7f4ff73;
 }
 
-/* Фото в круге */
 .review-logo {
   width: 25px;
   height: 25px;
@@ -186,7 +183,6 @@
   object-fit: cover;
 }
 
-/* Имя в овале */
 .review-name {
   color: #01406c;
   font-weight: 600;
@@ -209,7 +205,6 @@
   white-space: nowrap;
 }
 
-/* Появление титла при наведении на карточку */
 .review-card:hover .review-title {
   opacity: 1;
   transform: translateY(0);
@@ -230,28 +225,23 @@
 }
 
 @media (orientation: portrait) {
-  /* Секция */
   .reviews-section {
     position: relative;
   }
 
-  /* Обёртка — именно она задаёт ободок/скругления и внутр. тени,
-     при этом обрезает фон (overflow:hidden) так, чтобы картинка совпадала с краями */
   .reviews-wrapper {
     position: relative;
     width: 100%;
     left: 0;
     height: auto;
     height: 100%;
-    overflow: hidden !important; /* обрезаем фон по краю ободка */
-    box-shadow: none; /* внешний shadow убираем — всё через inset */
+    overflow: hidden !important;
+    box-shadow: none;
     border: 1px solid #ffffffd6;
     background-clip: padding-box;
     z-index: 2;
   }
 
-  /* Внутренние тени, которые "падают" на фон (картинку).
-     ::before накладывается поверх фонового изображения, но под карточками. */
   .reviews-wrapper::before {
     content: "";
     position: absolute;
@@ -259,7 +249,6 @@
     pointer-events: none;
     border-radius: inherit;
     z-index: 3;
-    /* два inset слоя — сверху и снизу — чтобы тени читаемо лежали на картинке */
     box-shadow:
       inset 0 18px 40px rgba(0, 0, 0, 0.18),
       inset 0 -14px 36px rgba(0, 0, 0, 0.12);
@@ -285,7 +274,6 @@
     transition: none !important;
   }
 
-  /* Cropper занимает всю обёртку и точно совпадает по краям */
   .reviews-background-cropper {
     position: absolute;
     top: 0;
@@ -293,11 +281,10 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 1; /* фон под тенью и карточками */
+    z-index: 1;
     border-radius: inherit;
   }
 
-  /* Фон — полностью заполняет cropper; под ободком (обрезается wrapper'ом) */
   .reviews-background {
     position: absolute;
     top: 80px;
@@ -308,13 +295,11 @@
     transform: none !important;
     transition: none !important;
     will-change: auto !important;
-    background-attachment: scroll !important; /* чтобы не было fixed-поведения */
+    background-attachment: scroll !important;
     background-position: center center !important;
     background-size: cover !important;
   }
 
-  /* Контейнер карточек — горизонтальный скролл (плавный), карточки расположены в ряд.
-     При этом контейнер выше тени (z-index) чтобы карточки были над тенью. */
   .reviews-container {
     width: 100%;
     display: flex;
@@ -326,7 +311,7 @@
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    z-index: 5; /* поверх тени и фона */
+    z-index: 5;
   }
 
   .reviews-container::-webkit-scrollbar {
@@ -337,8 +322,8 @@
     flex: 0 0 auto;
     min-width: 220px;
     max-width: 340px;
-    width: calc(62vw); /* адаптивная ширина — удобно для разных телефонов */
-    aspect-ratio: 4 / 3; /* <-- требуемое соотношение 4:3 */
+    width: calc(62vw);
+    aspect-ratio: 4 / 3;
     opacity: 1;
   }
 
@@ -357,7 +342,6 @@
     box-shadow: 0 8px 26px rgba(0,0,0,0.08);
   }
 
-  /* Заголовок карточки — всегда виден, без анимаций, переносимый при необходимости */
   .review-title {
     opacity: 1 !important;
     transform: none !important;
@@ -366,10 +350,9 @@
     font-style: italic;
     color: #335380;
     margin-top: 6px;
-    white-space: normal; /* разрешаем перенос на мобильных */
+    white-space: normal;
   }
 
-  /* Хедер с фото/именем — делаем компактнее, чтобы влезало в 4:3 */
   .review-header {
     gap: 8px;
     margin-bottom: 6px;
@@ -379,7 +362,6 @@
   }
 
   .review-header::after {
-    /* тонкая разделительная линия уехала — на мобилке не нужна, скрываем */
     display: none;
   }
 }

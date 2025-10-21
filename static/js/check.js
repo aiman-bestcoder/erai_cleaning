@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(updateVirtualCheck, 10);
   });
 
-  updateVirtualCheck(); // Initial render
+  updateVirtualCheck();
 });
 
 function getFormData() {
@@ -48,7 +48,6 @@ function updateVirtualCheck() {
 
       const carpet = breakdown.find(x => x.label.toLowerCase().includes("carpet cleaning"));
 
-      // Найдем скидку
       const frequencyItem = breakdown.find(x => x.label.startsWith("Frequency Discount:"));
       let discountPercent = 0;
       if (frequencyItem && typeof frequencyItem.label === "string") {
@@ -61,7 +60,6 @@ function updateVirtualCheck() {
         ? parseFloat(discountAmountItem.price.replace(/[^0-9.-]+/g, ""))
         : 0;
 
-      // Расчет базовой цены с коэффициентом типа уборки
       const basePrice = (areaItem?.price || 0) + (roomsItem?.price || 0) + (bathroomsItem?.price || 0);
 
       let serviceCoeff = 1;
@@ -73,10 +71,8 @@ function updateVirtualCheck() {
       const extrasTotal = extras.reduce((sum, item) => sum + item.price, 0);
       const carpetTotal = carpet ? carpet.price : 0;
 
-      // Итог без скидки
       const subtotal = cleaningServiceTotal + extrasTotal + carpetTotal;
 
-      // --- Строим html ---
       let html = "";
 
       const roomType = document.querySelector('[name="room_type"]')?.selectedOptions[0]?.textContent || "";
@@ -139,7 +135,6 @@ function updateVirtualCheck() {
         </li>`;
       }
 
-      // Client Info
       const name = document.querySelector('[name="name"]')?.value;
       const date = document.querySelector('[name="date"]')?.value;
       const time = document.querySelector('[name="time"]')?.value;

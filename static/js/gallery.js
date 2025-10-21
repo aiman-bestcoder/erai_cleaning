@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!track || slides.length === 0) return;
 
-  // Клон последнего слайда с прозрачностью
   const lastClone = slides[slides.length - 1].cloneNode(true);
   lastClone.style.opacity = "0";
   lastClone.style.pointerEvents = "none";
@@ -66,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
       setActive(best);
     }
 
-    // Остановка автопрокрутки при скролле
     stopAutoplay();
     resetScrollTimer();
   });
@@ -74,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let autoplayInterval = null;
   let scrollStopTimer = null;
   const AUTOPLAY_DELAY = 4000;
-  const SCROLL_RESTART_DELAY = 10000; // 10 секунд
+  const SCROLL_RESTART_DELAY = 10000;
 
   function startAutoplay() {
     stopAutoplay();

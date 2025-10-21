@@ -1,7 +1,6 @@
 .feedback-section {
-  /* сохраняем твои значения, но переключаемся на grid для гарантированного контроля правой колонки */
   display: grid;
-  grid-template-columns: 1fr minmax(320px, 50%); /* Левый блок гибкий, правый — минимум 320px, максимум 50% */
+  grid-template-columns: 1fr minmax(320px, 50%);
   width: clamp(400px, 80%, 1400px);
   border-radius: 95px;
   overflow: hidden;
@@ -9,20 +8,17 @@
   background-color: #fbf8ff;
   border: 1px solid rgba(255, 255, 255, 0.669);
   transition: all 0.3s ease;
-  /* высота как раньше (можно корректировать при необходимости) */
   height: calc(clamp(300px, 80%, 1400px) / (21/9));
   box-sizing: border-box;
 }
 
-/* гарантируем, что дети grid-а не будут выходить за свои ячейки */
 .feedback-section > * {
   min-width: 0;
   box-sizing: border-box;
 }
 
-/* левый блок — без изменений визуально */
 .feedback-left {
-  flex: 1; /* оставляем на случай, если где-то используется JS, но главное — grid-контейнер управляет размером */
+  flex: 1;
   background-image: url('/static/static_media/contact-section.jpg');
   background-size: cover;
   background-position: center;
@@ -33,7 +29,6 @@
   overflow: hidden;
 }
 
-/* декоративный слой — без изменения */
 .feedback-left::before {
   content: '';
   position: absolute;
@@ -51,17 +46,13 @@
   z-index: 2;
 }
 
-/* ---------- Формы и внутренняя логика (важные правки: min-width:0, flex-база 0) ---------- */
-
-/* оставляем твои правила для колонок, но гарантируем min-width:0 и возможность сжатия */
 .feedback-form-left,
 .feedback-form-right {
   flex: 1 1 clamp(250px, 45%, 50%);
-  min-width: 0;        /* КЛЮЧЕВОЕ: позволяет колонке сжиматься внутри flex контейнера */
+  min-width: 0;
   box-sizing: border-box;
 }
 
-/* стекло и текст слева — оставлено без изменений */
 .feedback-glass {
   background: #f6faff7f;
   backdrop-filter: blur(15px);
@@ -100,7 +91,6 @@
   margin-top: clamp(10px, 1.5vw, 20px);
 }
 
-/* правая ячейка grid — центрируем форму внутри */
 .feedback-right {
   background: #b2e4ff53;
   display: flex;
@@ -111,22 +101,19 @@
   min-width: 0; /* важно */
 }
 
-/* форма: всегда внутри правой ячейки, ширина 100% правой ячейки, но поля не выйдут за края */
 .feedback-form {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  padding: 0; /* если хочешь — можно добавить внутренние отступы, но я оставил твой стиль */
+  padding: 0;
 }
 
-/* ряд внутри формы остаётся flex — но дочерние колонки корректно сжимаются */
 .feedback-form-row {
   display: flex;
   gap: clamp(10px, 1.5vw, 20px);
   box-sizing: border-box;
 }
 
-/* колонки внутри формы: flex-basis 0 — ключ к равномерному распределению и сжатию */
 .feedback-form-columns {
   display: flex;
   flex-wrap: wrap;
@@ -138,19 +125,17 @@
 
 .feedback-form-left,
 .feedback-form-right {
-  flex: 1 1 0;   /* flex-basis 0 — гарантирует, что колонка будет сжиматься ровно до доступного места */
-  min-width: 0;  /* ещё раз — важно */
+  flex: 1 1 0;
+  min-width: 0;
   box-sizing: border-box;
 }
 
-/* отступы и поведение групп полей — сохранил твои значения, но добавил защиту от переполнения */
 .feedback-form-group {
   margin-bottom: 35px;
   position: relative;
   box-sizing: border-box;
 }
 
-/* ПОЛЕЗНОЕ правило: поля не могут быть шире родителя и учитывают бордер/паддинг */
 .feedback-form-group input,
 .feedback-form-group textarea {
   width: 100%;
@@ -159,7 +144,6 @@
   display: block;
 }
 
-/* сохраняем визуал */
 .feedback-form-group input {
   padding: clamp(10px, 1.5vw, 20px);
   font-size: clamp(0.9rem, 1vw, 1rem);
@@ -188,7 +172,6 @@
   resize: none;
 }
 
-/* фокус/плейсхолдер/лейбл — всё как у тебя */
 .feedback-form-group input:focus,
 .feedback-form-group textarea:focus {
   outline: none;
@@ -238,7 +221,6 @@
               inset 0 0 6px rgba(0, 0, 0, 0.094);
 }
 
-/* кнопка — без изменений (сохранил все твои правила) */
 .feedback-submit-btn {
   padding: clamp(10px, 1.5vw, 15px);
   border-radius: 25px;
@@ -302,7 +284,6 @@
 }
 
 @media (orientation: portrait) {
-  /* делаем .feedback-section потоковым как у тебя было */
   .feedback-section {
     display: block;
     width: 90%;
@@ -313,46 +294,40 @@
     border-radius: 55px 55px 15px 15px;
   }
 
-  /* LEFT: стекло становится горизонтальным прямоугольником сверху */
   .feedback-left {
     display: flex;
-    align-items: flex-start;      /* стекло сверху */
+    align-items: flex-start;
     justify-content: center;
-    padding: 12px 0 8px;          /* сверху чуть воздуха */
+    padding: 12px 0 8px;
     box-sizing: border-box;
   }
 
-  /* стеклянный блок — узкий по высоте, широкий по ширине, центрирован */
   .feedback-glass {
-    width: 90%;     /* одинаковые боковые отступы с формой (20px) */
+    width: 90%; 
     max-width: 980px;
     margin: 0 auto;
     margin-top: 5px;
-    padding: 14px 20px;           /* уменьшённый padding — делает блок "горизонтальным" */
+    padding: 14px 20px;
     box-sizing: border-box;
-    align-self: flex-start;       /* располагается вверху левой области */
+    align-self: flex-start;
   }
 
-  /* чуть меньше текста/паддингов внутри info-box */
   .feedback-info-box {
     padding: 10px 12px;
     border-radius: 10px;
   }
 
-  /* RIGHT: запас снизу и одинаковые боковые отступы с .feedback-glass */
   .feedback-right {
-    padding: 14px 20px 26px; /* чтобы кнопка точно была видна */
+    padding: 14px 20px 26px;
     box-sizing: border-box;
   }
 
-  /* ФОРМА: делаем боковые отступы одинаковыми с .feedback-glass, чтобы края совпадали */
   .feedback-form {
     max-width: 100%;
-    padding: 0 20px;            /* ключ: те же 20px, что и у .feedback-glass */
+    padding: 0 20px;
     box-sizing: border-box;
   }
 
-  /* колонки внутри формы — становятся вертикальными, но при этом занимают ту же внутреннюю ширину */
   .feedback-form-columns {
     display: flex;
     flex-direction: column;
@@ -360,7 +335,6 @@
     margin-top: 0px;
   }
 
-  /* колонки занимают всю доступную внутреннюю ширину */
   .feedback-form-left,
   .feedback-form-right {
     width: 100%;
@@ -368,13 +342,11 @@
     box-sizing: border-box;
   }
 
-  /* группы полей — выравниваем отступы, чтобы поля имели одинаковый левый край */
   .feedback-form-group {
     padding: 0;
     box-sizing: border-box;
   }
 
-  /* инпуты/textarea — всегда по ширине родителя и с учётом box-sizing */
   .feedback-form-group input,
   .feedback-form-group textarea {
     width: 100%;
@@ -384,13 +356,11 @@
     display: block;
   }
 
-  /* Если у тебя были ряды с двумя полями (name/phone), на узких экранах пусть они тоже станут в колонку */
   .feedback-form-row {
     flex-direction: column;
     gap: 10px;
   }
 
-  /* кнопка — гарантируем видимость, немного уменьшаем ширину и добавляем z-index */
   .feedback-submit-btn {
     width: clamp(160px, 60%, 260px);
     margin: 12px auto 0;
@@ -398,7 +368,6 @@
     position: relative;
   }
 
-  /* на самых узких — подгоняем размеры */
   @media (max-width: 420px) {
     .feedback-glass { padding: 10px 14px; border-radius: 35px; }
     .feedback-form { padding: 0 14px; }

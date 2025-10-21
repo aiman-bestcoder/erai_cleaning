@@ -1,8 +1,12 @@
-venv/
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
 *.sqlite3
 *.log
-/staticfiles/
-media/
-.env
+db.sqlite3
+*.env
+.env/
+venv/
+public_key
+public_key.pub

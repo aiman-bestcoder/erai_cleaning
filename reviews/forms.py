@@ -10,24 +10,24 @@ class ReviewForm(forms.ModelForm):
             "work_description": forms.TextInput(
                 attrs={
                     "class": "input",
-                    "placeholder": "Описание работы",
+                    "placeholder": "Describe our work in one word",
                 }
             ),
             "text": forms.Textarea(
                 attrs={
                     "class": "input",
-                    "placeholder": "Ваш отзыв",
+                    "placeholder": "Your review",
                 }
             ),
             "name": forms.TextInput(
                 attrs={
                     "class": "input",
-                    "placeholder": "Ваше имя",
+                    "placeholder": "Your name",
                 }
             ),
         }
         labels = {
-            "work_description": "Описание работы",
-            "text": "Отзыв",
-            "name": "Имя",
+            "work_description": "Work Description",
+            "text": "Review Text",
+            "name": "Name",
         }

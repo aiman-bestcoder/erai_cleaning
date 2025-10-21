@@ -70,7 +70,7 @@
 .order-row-3 {
   display: flex;
   gap: 20px;
-  flex-wrap: nowrap; /* чтобы не переносились */
+  flex-wrap: nowrap;
 }
 
 
@@ -198,22 +198,16 @@
   100% { background-position: 0 0; }
 }
 
-/* ─────────────────────────────────────────────────────────────────────
-   Плавающие лейблы и стили полей
-   ───────────────────────────────────────────────────────────────────── */
-
-/* Контейнер-поле */
 .floating-group {
   position: relative;
   margin-bottom: 25px;
 }
 
-/* Input, select, textarea */
 .floating-group input,
 .floating-group select,
 .floating-group textarea {
   width: 100%;
-  padding: 16px 18px 16px; /* больше padding-top для лейбла */
+  padding: 16px 18px 16px;
   font-size: 1rem;
   border: 1px solid rgba(255,255,255,0.4);
   background: rgba(206, 237, 255, 0.35);
@@ -233,20 +227,17 @@
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-
 .floating-group textarea {
   resize: none;
   height: 360px;
   border-radius: 35px;
 }
 
-/* Спрятать плейсхолдер */
 .floating-group input::placeholder,
 .floating-group textarea::placeholder {
   color: transparent;
 }
 
-/* Убрать нативную стрелку у select */
 .floating-group select {
   position: absolute;
   opacity: 0;
@@ -258,7 +249,6 @@
   border: 0;
 }
 
-/* Hover/focus-анимации полей */
 .floating-group input:hover,
 .floating-group select:hover,
 .floating-group textarea:hover {
@@ -278,7 +268,6 @@
   transform: scale(1.01);
 }
 
-/* Лейбл поверх поля */
 .floating-group label {
   position: absolute;
   top: 50%;
@@ -294,7 +283,6 @@
   z-index: 1;
 }
 
-/* Подъём лейбла */
 .floating-group input:focus + label,
 .floating-group textarea:focus + label,
 .floating-group input:not(:placeholder-shown) + label,
@@ -313,7 +301,6 @@
   margin: 0;
 }
 
-/* Firefox */
 .floating-group input[type="number"] {
   -moz-appearance: textfield;
 }
@@ -397,8 +384,6 @@
   box-shadow: inset 0 0 4px rgba(239,247,255,0.7);
 }
 
-
-/* Скрыть нативный <select> внутри кастомного дропдауна */
 .custom-dropdown select,
 .floating-group select,
 .order-form-group select {
@@ -414,11 +399,11 @@
 }
 
 .toggle-wrapper {
-  width: calc(25% - 10px); /* Три в ряд, с запасом под отступы */
+  width: calc(25% - 10px);
   box-sizing: border-box;
-  min-width: 140px; /* Сделать минимальную ширину больше, чтобы текст влезал */
-  margin-bottom: 10px; /* Отступ снизу, чтобы между рядами было пространство */
-  display: inline-block; /* Чтобы три элемента шли в ряд */
+  min-width: 140px;
+  margin-bottom: 10px; 
+  display: inline-block;
   vertical-align: top;
 }
 
@@ -426,7 +411,6 @@
   margin-right: 0;
 }
 
-/* Контейнер с фоном и отступами */
 .order-toggle-box {
   display: flex;
   align-items: center;
@@ -456,19 +440,16 @@
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Подпись (переносится, не обрезается) */
 .order-toggle-box .toggle-label {
   flex: 1;
   word-break: break-word;
   white-space: normal;
-  display: flex;          /* flex-контейнер для выравнивания */
-  align-items: center;    /* вертикальный центр */
-  justify-content: center; /* горизонтальный центр, если нужно */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center; 
 }
 
-
-/* Кнопка справа */
 .order-toggle-box .toggle-button {
   flex-shrink: 0;
   width: 28px;
@@ -484,7 +465,6 @@
   border: 1px solid rgb(171, 189, 255);
 }
 
-/* Активное состояние */
 .order-toggle-box input[type="checkbox"] {
   position: absolute;
   opacity: 0;
@@ -524,7 +504,6 @@
     width: 100%;
   }
 
-  /* Левая колонка */
   .order-form-left {
     width: 100%;
     gap: 15px;
@@ -561,12 +540,11 @@
     padding: 12px;
   }
 
-  /* Правая колонка (чек) */
   .order-form-right {
     width: 100%;
     margin-top: 30px;
     border-radius: 30px;
-    order: 2; /* перемещаем после левой колонки */
+    order: 2;
   }
 
   .virtual-check {
@@ -578,7 +556,7 @@
 
   .custom-dropdown {
     display: flex;
-    flex-direction: column; /* чтобы label/selected и options шли вниз */
+    flex-direction: column;
     width: 100%;
     max-width: 100%;
     position: relative;
@@ -590,7 +568,7 @@
   }
 
   .custom-dropdown .options {
-    position: relative; /* вместо absolute */
+    position: relative;
     visibility: hidden;
     opacity: 0;
     max-height: 0;
@@ -601,7 +579,7 @@
   .custom-dropdown .options.show {
     visibility: visible;
     opacity: 1;
-    max-height: 180px; /* или auto */
+    max-height: 180px;
   }
 
   .toggle-wrapper {
@@ -619,7 +597,6 @@
     text-align: left;
   }
 
-  /* Заголовок формы */
   .order-form-title {
     left: 50%;
     transform: translate(-50%, -50%);

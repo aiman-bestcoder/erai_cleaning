@@ -16,7 +16,7 @@
 }
 
 .header * {
-    pointer-events: auto; /* а детям — разрешаем клики */
+    pointer-events: auto;
 }
 
 .header.collapsed {
@@ -110,7 +110,7 @@
         animation: headerfadeIn 0.5s forwards 1s;
     }
     .header * {
-        pointer-events: auto; /* а детям — разрешаем клики */
+        pointer-events: auto;
     }
 
     .header.collapsed {

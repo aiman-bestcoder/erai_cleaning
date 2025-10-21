@@ -15,7 +15,7 @@
 .links-box {
   min-height: auto;
   height: auto;
-  flex: 1; /* одинаковая высота за счет flex */
+  flex: 1;
 }
 
 .footer-container {
@@ -27,7 +27,6 @@
   align-items: center;
 }
 
-/* Колонки с текстом */
 .footer-col {
   background: #edf6ff8a;
   border-radius: 45px;
@@ -40,24 +39,22 @@
   text-align: center;
   gap: 14px;
   border: 1px solid #ffffff80;
-  min-height: 375px; /* одинаковая высота с links-box */
+  min-height: 375px;
 }
 
 .footer-col:first-child {
-  flex: 1 1 320px;   /* вместо жёсткого flex: 0 0 280px */
+  flex: 1 1 320px;
   max-width: 280px;
   align-items: center;
 }
 
-/* Чтобы кнопки не накладывались */
 .footer-col:first-child .footer-btn {
   display: block;
   width: 100%;
   max-width: 220px;
-  margin: 6px 0;   /* небольшой вертикальный отступ */
+  margin: 6px 0;
 }
 
-/* Заголовки и ссылки */
 .footer-heading {
   font-size: 1.6rem;
   font-weight: 600;
@@ -91,7 +88,6 @@
   transform: scale(1.03);
 }
 
-/* Логотип и иконки */
 .footer-logo-img {
   max-width: 70px;
   margin-bottom: 12px;
@@ -128,7 +124,6 @@
   fill: currentColor;
 }
 
-/* Кнопки */
 .footer-btn {
   border-radius: 50px;
   padding: 12px 22px;
@@ -165,7 +160,6 @@
   transform: translateY(-1px);
 }
 
-/* Контакты */
 .footer-contact {
   margin-top: 10px;
   font-size: 1rem;
@@ -181,7 +175,6 @@
   text-decoration: none;
 }
 
-/* Нижняя часть футера */
 .footer-bottom {
   text-align: center;
   font-size: 0.875rem;
@@ -192,13 +185,11 @@
   animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Анимация */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-/* Секция ссылок */
 .links-box {
   display: flex;
   width: 100%;
@@ -208,22 +199,21 @@
   border-radius: 45px;
   box-shadow: inset 0 0 3px #00000026;
   overflow: hidden;
-  min-height: 375px; /* равная высота с footer-col */
+  min-height: 375px;
 }
 
 .links-column {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* вертикальное центрирование */
-  align-items: center; /* горизонтальное центрирование */
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 20px;
   margin-top: 25px;
   position: relative;
 }
 
-/* Вертикальные линии между колонками */
 .links-column:not(:last-child)::after {
   content: "";
   position: absolute;
@@ -234,7 +224,6 @@
   background-color: #0000001a;
 }
 
-/* Заголовки и ссылки */
 .links-column .footer-heading {
   margin: 0 0 16px;
   line-height: 1.2;
@@ -286,7 +275,6 @@
     margin: 0 auto;
   }
 
-  /* Первая колонка с логотипом и кнопками */
   .footer-col:first-child {
     flex-direction: column;
     align-items: center;
@@ -310,7 +298,6 @@
     margin: 6px auto;
   }
 
-  /* Секция ссылок */
   .links-box {
     flex-direction: column;
     gap: 15px;
@@ -329,7 +316,7 @@
   }
 
   .links-column:not(:last-child)::after {
-    display: none; /* убираем вертикальные линии */
+    display: none;
   }
 
   .links-column .footer-links a {

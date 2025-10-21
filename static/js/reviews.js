@@ -6,18 +6,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!container || !bg) return;
 
-  // Задаем плавность через CSS
   bg.style.transition = "transform 0.2s ease-out";
 
-  // Параллакс фона при скролле
   function updateBg() {
     const rect = container.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
     if (rect.bottom > 0 && rect.top < windowHeight) {
-      // progress 0..1 от появления контейнера
+
       const progress = Math.min(Math.max((windowHeight - rect.top) / (windowHeight + rect.height), 0), 1);
-      const maxOffset = 250; // смещение в px
+      const maxOffset = 250;
       bg.style.transform = `translateY(${progress * maxOffset}px)`;
     }
   }
@@ -26,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", updateBg);
   updateBg();
 
-  // Анимация карточек
   const cardObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -37,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.1 });
   cards.forEach(card => cardObserver.observe(card));
 
-  // Анимация заголовка
   const titleObserver = new IntersectionObserver(([entry]) => {
     if (entry.isIntersecting) {
       title.classList.add("show");
@@ -46,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.05 });
   titleObserver.observe(title);
 
-  // Отступы для крайних карточек
   function updateCardMargins() {
     cards.forEach(card => { card.style.marginLeft = "0"; card.style.marginRight = "0"; });
     if (cards.length) {

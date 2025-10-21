@@ -1,0 +1,308 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #b2e4ff53;
+  border-top: 1px solid #ffffff80;
+  backdrop-filter: blur(20px);
+  padding: 60px 20px 30px;
+  border-radius: 75px 75px 0 0;
+  box-shadow: 0 0 6px #0000001f;
+  color: #0e254e;
+}
+
+.footer-col,
+.links-box {
+  min-height: auto;
+  height: auto;
+  flex: 1; /* одинаковая высота за счет flex */
+}
+
+.footer-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Колонки с текстом */
+.footer-col {
+  background: #edf6ff8a;
+  border-radius: 45px;
+  padding: 20px;
+  margin: auto;
+  box-shadow: inset 0 0 3px #00000026;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  border: 1px solid #ffffff80;
+  min-height: 375px; /* одинаковая высота с links-box */
+}
+
+.footer-col:first-child {
+  flex: 1 1 320px;   /* вместо жёсткого flex: 0 0 280px */
+  max-width: 280px;
+  align-items: center;
+}
+
+/* Чтобы кнопки не накладывались */
+.footer-col:first-child .footer-btn {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  margin: 6px 0;   /* небольшой вертикальный отступ */
+}
+
+/* Заголовки и ссылки */
+.footer-heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #013b6dff;
+  margin-bottom: 8px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: center;
+}
+
+.footer-links a {
+  color: #013b6dff;
+  text-decoration: none;
+  font-size: 1.05rem;
+  padding: 6px 12px;
+  border-radius: 12px;
+  display: inline-block;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  background: #ffffff29;
+  transform: scale(1.03);
+}
+
+/* Логотип и иконки */
+.footer-logo-img {
+  max-width: 70px;
+  margin-bottom: 12px;
+}
+
+.footer-quick-icons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.footer-icon-only {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: #dbedffd8;
+  border: 1px solid #ffffff80;
+  color: #013b6dff;
+  transition: all 0.3s ease;
+}
+
+.footer-icon-only:hover {
+  background: #ffffff29;
+  transform: scale(1.1);
+}
+
+.footer-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Кнопки */
+.footer-btn {
+  border-radius: 50px;
+  padding: 12px 22px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  min-width: 140px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.booking-btn, .call-btn {
+  background: #01406cff;
+  text-decoration: none;
+  color: #ffffffff;
+  white-space: nowrap;
+}
+
+.booking-btn:hover, .call-btn:hover {
+  background: #012d4dff;
+  transform: translateY(-1px);
+}
+
+.estimate-btn, .email-btn {
+  background: transparent;
+  border: 2px solid #01406cff;
+  color: #01406cff;
+}
+
+.estimate-btn:hover, .email-btn:hover {
+  background: #01406cff;
+  color: #ffffffff;
+  transform: translateY(-1px);
+}
+
+/* Контакты */
+.footer-contact {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #01406cff;
+}
+
+.footer-contact a {
+  color: #01406cff;
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  text-decoration: none;
+}
+
+/* Нижняя часть футера */
+.footer-bottom {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #888888ff;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #0000000d;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Анимация */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Секция ссылок */
+.links-box {
+  display: flex;
+  width: 100%;
+  background: #edf6ff8a;
+  border: 1px solid #ffffff80;
+  align-items: flex-start;
+  border-radius: 45px;
+  box-shadow: inset 0 0 3px #00000026;
+  overflow: hidden;
+  min-height: 375px; /* равная высота с footer-col */
+}
+
+.links-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* вертикальное центрирование */
+  align-items: center; /* горизонтальное центрирование */
+  text-align: center;
+  padding: 20px;
+  margin-top: 25px;
+  position: relative;
+}
+
+/* Вертикальные линии между колонками */
+.links-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 1px;
+  background-color: #0000001a;
+}
+
+/* Заголовки и ссылки */
+.links-column .footer-heading {
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+
+.links-column .footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: center;
+}
+
+.links-column .footer-links a {
+  display: block;
+  padding: 6px 12px;
+  border-radius: 18px;
+  color: #013b6dff;
+  background: transparent;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.links-column .footer-links a:hover {
+  background: #0000000d;
+  transform: none;
+}
+
+@media (orientation: portrait) {
+  .footer-container {
+    flex-direction: column;
+    align-items: stretch; /* ссылки тянутся, а колонка с лого сама по контенту */
+  }
+
+  .footer-col:first-child {
+    order: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+    max-height: 180px;  /* убрали фикс 100px */
+    min-height: auto; /* под контент */
+    max-width: none; /* убрали ограничение */
+  }
+
+  .footer-col:first-child .footer-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .footer-col:first-child .footer-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .footer-col:first-child .footer-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}

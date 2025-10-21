@@ -100,7 +100,6 @@
   text-overflow: ellipsis;
 }
 
-/* Хедер теперь привязан к тексту */
 .about-heading {
   position: absolute;
   top: calc(5px + 2%);
@@ -139,11 +138,11 @@
     width: 90%;
     margin: 20px auto;
     border-radius: 50px;
-    display: flex;           /* делаем флекс контейнер */
-    flex-direction: column;  /* картинки сверху, текст снизу */
+    display: flex;           
+    flex-direction: column;
     align-items: center;
-    justify-content: center; /* вертикальное центрирование */
-    padding: 20px;           /* отступы сверху/снизу */
+    justify-content: center;
+    padding: 20px;
     box-sizing: border-box;
   }
 
@@ -155,12 +154,12 @@
     padding: 20px;
     left: 0px;
     bottom: 0px;
-    margin-top: 65px;       /* небольшой отступ от картинки */
+    margin-top: 65px;
     border-radius: 45px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* вертикально по центру */
-    align-items: center;     /* горизонтально по центру */
+    justify-content: center;
+    align-items: center;
     text-align: center;
     transform: none !important;
   }
@@ -173,7 +172,6 @@
     border-radius: 50px;
   }
 
-  /* Заголовок по центру сверху, ширина по содержимому */
   .about-heading {
     position: absolute;
     top: 3%;
@@ -189,7 +187,7 @@
     display: inline-block;
   }
 
-  /* отключаем hover-анимации на телефонах */
+
   .about-section:hover .about-text,
   .about-section:hover .about-image img,
   .about-section:hover .about-heading {

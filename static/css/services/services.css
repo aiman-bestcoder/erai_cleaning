@@ -44,7 +44,7 @@
   scroll-snap-type: x mandatory;
   box-sizing: border-box;
   border-radius: clamp(55px, 10vw, 105px);
-  padding: clamp(30px, 3vw, 60px); /* вертикальные и горизонтальные отступы */
+  padding: clamp(30px, 3vw, 60px);
   scroll-padding-left: clamp(30px, 3vw, 60px); 
   scroll-padding-right: clamp(30px, 3vw, 60px);
   display: flex;
@@ -162,7 +162,7 @@
     margin: 20px auto 60px;
     padding: 0;
     border-radius: 70px;
-    aspect-ratio: 1 / 1; /* квадрат */
+    aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -176,8 +176,8 @@
   }
 
   .services-scroll-wrapper {
-    padding-inline: clamp(30px, 3vw, 60px);           /* отступы слева/справа */
-    scroll-padding-inline: clamp(30px, 3vw, 60px);    /* для scroll-snap */
+    padding-inline: clamp(30px, 3vw, 60px);
+    scroll-padding-inline: clamp(30px, 3vw, 60px);
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
@@ -198,30 +198,30 @@
 
   .services-row::after {
     content: "";
-    flex: 0 0 clamp(30px, 3vw, 60px); /* ширина буфера = отступ контейнера */
+    flex: 0 0 clamp(30px, 3vw, 60px);
     height: 1px;
   }
 
   .service-card {
     flex: 0 0 auto;
-    aspect-ratio: 1 / 1; /* карточка квадрат */
+    aspect-ratio: 1 / 1;
     width: clamp(290px, 90%, 380px);
     display: flex;
     align-items: center;
     justify-content: center;
-    scroll-snap-align: start; /* карточки «прилипают» к левому краю */
+    scroll-snap-align: start;
   }
 
   .service-card:last-child {
-    margin-inline-end: clamp(30px, 3vw, 60px); /* если что-то всё ещё обрезает правую часть */
-    scroll-snap-align: end; /* если хочешь, чтобы последняя карточка «прилипала» к правому отступу */
+    margin-inline-end: clamp(30px, 3vw, 60px);
+    scroll-snap-align: end;
   }
 
   .service-info {
     position: absolute;
     left: 0;
     right: 0;
-    height: 50%; /* всегда половина карточки */
+    height: 50%;
     width: 97%;
     border-radius: 15px 15px 50px 50px;
     padding: 15px;

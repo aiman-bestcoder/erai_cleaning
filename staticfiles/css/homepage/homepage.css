@@ -1,0 +1,210 @@
+/* === Базовые стили страницы === */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+  background: linear-gradient(45deg, #ecf6ff, #e3f3ff);
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 100%;
+}
+
+/* === Контейнер с полноэкранным изображением === */
+.image-container {
+  position: relative;
+  z-index: 9;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin-bottom: -50px;
+}
+
+/* фон-слой, скрывающий изображение, пока не прогрузится */
+.image-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 5;
+  animation: fadeOut 1s ease-in-out forwards;
+}
+
+/* Размытие + яркость при загрузке */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes imageBlurIn {
+  from { filter: blur(10px) brightness(1.5); }
+  to   { filter: blur(0)  brightness(1); }
+}
+
+.image-container img {
+  width: 101%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #000;
+  box-shadow: 0 0 0 1px #ffffff, 0 0 10px #00000067;
+  border: none;
+  filter: blur(7px);
+  animation: imageBlurIn 1s ease-in-out forwards;
+  transition: transform 0.2s ease, filter 0.2s ease; /* Плавное изменение */
+  will-change: transform, filter; /* Подготовка к изменениям */
+}
+
+.overlay {
+  aspect-ratio: 4 / 3; /* задай нужное соотношение, например 4:3 */
+  width: 25vw;         /* блок будет масштабироваться от ширины экрана */
+  max-width: 800px;    /* ограничение сверху */
+  min-width: 380px;    /* ограничение снизу */
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  padding: 40px;
+  width: 20vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+  /* Чистое стекло без градиента */
+  backdrop-filter: blur(12px) saturate(1.25);
+  -webkit-backdrop-filter: blur(12px) saturate(1.25);
+  background: #8cd7ff73;
+  border-radius: 45px;
+  border: 1px solid rgba(228, 245, 255, 0.55);
+
+  /* Тень + внутреннее свечение */
+  box-shadow:
+    0 8px 15px rgba(0, 0, 0, 0.058),
+    inset 0 0 12px rgba(255, 255, 255, 0.2);
+
+  opacity: 0;
+  animation: fadeInUp 1.2s ease forwards 1s;
+}
+
+/* Анимация появления (не исчезает) */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translate(-50%, -40%) scale(0.95); }
+  60% { opacity: 1; transform: translate(-50%, -52%) scale(1.02); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.overlay h1 {
+  font-size: clamp(3em, 3vw, 4.5em);
+  margin: 0;
+  padding: 0 20px;
+  color: #ffffff;
+  text-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.overlay p {
+  font-size: clamp(1.3em, 1.5vw, 1.5em);
+  color: #5778aa;
+}
+
+.overlay-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Кнопки */
+.overlay button {
+  padding: clamp(8px, 1vw, 12px) clamp(16px, 2vw, 30px);
+  white-space: nowrap;
+  font-size: clamp(1em, 1vw, 1.1em);
+  border: none;
+  border-radius: 25px;
+  color: #013f6c;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.561);
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.overlay button:hover {
+  background: rgba(255,255,255,0.15);
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.overlay button:active {
+  transform: scale(0.85);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Круглая кнопка */
+.overlay .circle-btn {
+  width: clamp(45px, 5vw, 50px);
+  height: clamp(45px, 5vw, 50px);
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1em, 2vw, 1.4em);
+  background: rgba(255,255,255,0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.561);
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.overlay .circle-btn svg {
+  width: clamp(22px, 2vw, 22px);
+  height: clamp(22px, 2vw, 22px);
+  fill: #2a53a3;      /* любой цвет */
+  transition: fill 0.2s ease;
+}
+
+.overlay .circle-btn:hover svg {
+  fill: #ffffff;      /* при наведении */
+}
+
+.overlay .circle-btn:hover {
+  background: rgba(255,255,255,0.15);
+  transform: scale(1.1);
+}
+
+.overlay .circle-btn:active {
+  transform: scale(0.85);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Подсказка */
+.overlay .circle-btn::after {
+  content: "Request a free estimation";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px) scale(0.8);
+  background: rgba(123, 200, 255, 0.658);
+  color: #fff;
+  border: 1px solid rgba(199, 234, 255, 0.1);
+  padding: 5px 15px;
+  font-size: 0.65em;
+  border-radius: 25px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.overlay .circle-btn:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(25px) scale(1);
+}

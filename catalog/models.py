@@ -51,7 +51,7 @@ class Service(models.Model):
     def get_thumbnail_300x300(self):
         service_image = Service.objects.get(service_thumbnail=self)
         service_thumbnail = get_thumbnail(
-            service_image.photo,
+            service_image.service_thumbnail,
             '300x300',
             quality=51,
         )
@@ -96,7 +96,7 @@ class Extra(models.Model):
     def get_thumbnail_extra(self):
         extra_image = Service.objects.get(service_thumbnail=self)
         extra_thumbnail = get_thumbnail(
-            extra_image.photo,
+            extra_image.extra_thumbnail,
             '300x300',
             quality=51,
         )

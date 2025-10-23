@@ -30,7 +30,6 @@ def calculate_price(data):
 
     base_price = S * Tr + 26 * Nr + 31 * Nb
 
-
     service_id = data.get("service_type")
     try:
         service = Service.objects.get(pk=service_id)
